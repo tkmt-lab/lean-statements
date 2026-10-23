@@ -8,7 +8,12 @@
       "url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/LICENSE",
       "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
       "license": "Apache-2.0",
-      "scope": "Lean and code; Heesch LICENSE separately assigns CC-BY-4.0 to original article/text/data"
+      "scope": "Code and Lean sources: Apache-2.0. This repository's LICENSING.md assigns CC BY 4.0 to article text, figures, research data, and top-level README.md, AGENTS.md and LICENSING.md; those documents are not copied into this package.",
+      "licensing_file": {
+        "path": "LICENSING.md",
+        "url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/LICENSING.md",
+        "sha256": "8b7b896db200917372d62fd6543e2f42931e8f81bf331f24c37221d8131966d8"
+      }
     },
     {
       "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -17,7 +22,12 @@
       "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/LICENSE",
       "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
       "license": "Apache-2.0",
-      "scope": "Lean and code; Heesch LICENSE separately assigns CC-BY-4.0 to original article/text/data"
+      "scope": "Code and Lean sources: Apache-2.0. This repository's LICENSING.md assigns CC BY 4.0 to article text, figures, research data, and top-level README.md, AGENTS.md and LICENSING.md; those documents are not copied into this package.",
+      "licensing_file": {
+        "path": "LICENSING.md",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/LICENSING.md",
+        "sha256": "cd77724645cb5535f81dba17e6b44e30596bd9e7eeab9172485ef1a46c2702dd"
+      }
     },
     {
       "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -26,7 +36,12 @@
       "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/LICENSE",
       "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
       "license": "Apache-2.0",
-      "scope": "Lean and code; Heesch LICENSE separately assigns CC-BY-4.0 to original article/text/data"
+      "scope": "Code and Lean sources: Apache-2.0. This repository's LICENSING.md assigns CC BY 4.0 to article text, figures, research data, and top-level README.md, AGENTS.md and LICENSING.md; those documents are not copied into this package.",
+      "licensing_file": {
+        "path": "LICENSING.md",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/LICENSING.md",
+        "sha256": "cd77724645cb5535f81dba17e6b44e30596bd9e7eeab9172485ef1a46c2702dd"
+      }
     },
     {
       "repository": "tkmt-lab/heesch-certificates",

@@ -105,7 +105,17 @@ def main() -> None:
     parser.add_argument("--problem", action="append", help="Elaborate only these manifest IDs; byte-check all files")
     parser.add_argument("--mathlib-project", type=Path, default=ROOT)
     parser.add_argument("--evidence", type=Path, default=ROOT / ".build" / "check")
+    parser.add_argument("--rss-limit-mib", type=int, default=3072,
+                        help="sampled process RSS limit (1024..4608 MiB; default 3072)")
+    parser.add_argument("--lean-memory-mib", type=int, default=3072,
+                        help="Lean's -M memory threshold (1024..4096 MiB; default 3072)")
     args = parser.parse_args()
+    if not 1024 <= args.rss_limit_mib <= 4608:
+        parser.error("--rss-limit-mib must be between 1024 and 4608")
+    if not 1024 <= args.lean_memory_mib <= 4096:
+        parser.error("--lean-memory-mib must be between 1024 and 4096")
+    if args.lean_memory_mib > args.rss_limit_mib:
+        parser.error("--lean-memory-mib must not exceed --rss-limit-mib")
     manifest = json.loads((ROOT / "manifest.json").read_text())
     originals = read_only_correspondence(manifest)
     selected = [p for p in manifest["problems"] if not args.problem or p["id"] in args.problem]
@@ -139,7 +149,7 @@ def main() -> None:
     report = {"toolchain": expected, "compiler": lean,
               "mathlib_project_read_only": str(project), "mathlib_paths": env["LEAN_PATH"],
               "constraints": {"sequential": True, "nice": 10, "lean_threads": 1,
-                              "lean_memory_mib": 3072, "rss_limit_mib": 3072,
+                              "lean_memory_mib": args.lean_memory_mib, "rss_limit_mib": args.rss_limit_mib,
                               "per_file_timeout_seconds": 600},
               "linked_proofs_executed": False, "runs": [], "comparisons": []}
 
@@ -153,7 +163,7 @@ def main() -> None:
         free = free_percent()
         if free < 30:
             raise RuntimeError(f"Required free memory >=30%; observed {free}%")
-        command = ["nice", "-n", "10", lean, "-j1", "-M3072", "--root=" + str(root)]
+        command = ["nice", "-n", "10", lean, "-j1", f"-M{args.lean_memory_mib}", "--root=" + str(root)]
         if output is not None:
             output.parent.mkdir(parents=True, exist_ok=True)
             command += ["-o", str(output)]
@@ -176,8 +186,8 @@ def main() -> None:
                                          text=True, capture_output=True).stdout.strip()
                     record["peak_rss_kib"] = max(record["peak_rss_kib"], int(rss or 0))
                     elapsed = time.monotonic() - started
-                    if record["peak_rss_kib"] > 3072 * 1024:
-                        stopped = "own RSS exceeded 3 GiB"
+                    if record["peak_rss_kib"] > args.rss_limit_mib * 1024:
+                        stopped = f"own RSS exceeded {args.rss_limit_mib} MiB"
                     if elapsed > 600:
                         stopped = "per-file timeout"
                     if time.monotonic() - last_memory_check >= 5:

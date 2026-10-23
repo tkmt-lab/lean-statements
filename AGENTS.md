@@ -1,8 +1,9 @@
 # Entry point for a Lean reader
 
 Read README.md, claims.json and CORRESPONDENCE.md. The repository contains nine
-independent statement modules and 18 declarations. Every theorem body deliberately
-uses `sorry`; the proof lives at the fixed public URL in its `formal_proof` attribute.
+independent statement modules and 18 theorem declarations. Every theorem body
+deliberately uses `sorry`; the proof lives at the fixed public URL in its
+`formal_proof` attribute.
 
 Checks from the repository root (Python 3.11+, macOS or Linux):
 - `python3 -B tools/check.py --static-only`: reconstruct exact published source bytes.

@@ -16,9 +16,15 @@ def main():
     assert claims['statement_only'] is True
     assert len(originals)==claims['problem_file_count']==9
     assert len(rows)==claims['claim_count']==18 and len({r['id'] for r in rows})==18
+    file_scopes=claims['file_scopes']
+    assert set(file_scopes)=={p['id'] for p in manifest['problems']}
+    for problem in manifest['problems']:
+        shared=file_scopes[problem['id']]
+        assert shared['file']==problem['file'] and isinstance(shared['scope'],str) and shared['scope'].strip()
     expected={(p['id'],d['name']):(p,d) for p in manifest['problems'] for d in p['declarations']}
     actual=set()
     for row in rows:
+        assert isinstance(row['scope'],str) and row['scope'].strip()
         key=(row['id'].split('.')[0],row['declaration']);assert key in expected;actual.add(key)
         problem,decl=expected[key]
         assert row['file']==problem['file'] and row['line']==decl['normalized_line']

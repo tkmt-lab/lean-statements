@@ -16,16 +16,17 @@ its truth or check the linked proof.
 |---|---:|---|
 | [A3](FormalConjectures/Paper/A3.lean) | 1 | Two-stage classification with `0 < l < k` |
 | [AffineRays](FormalConjectures/Paper/AffineRays.lean) | 1 | Formal eventual-periodicity statement under `Valid` and `TrianglesInCharts` |
-| [K3](FormalConjectures/Paper/K3.lean) | 1 | Periodicity on all positive-domain rays |
-| [C1](FormalConjectures/Paper/C1.lean) | 2 | Classification and positive-domain ray periodicity |
-| [O2](FormalConjectures/Paper/O2.lean) | 2 | Absence when both parameters are at least two, and ray periodicity |
-| [D14](FormalConjectures/Paper/D14.lean) | 1 | Positive-domain ray periodicity |
-| [E10](FormalConjectures/Paper/E10.lean) | 2 | Classification for `r ≥ 2`; ray periodicity also includes `r = 1` |
+| [K3](FormalConjectures/Paper/K3.lean) | 1 | Eventual periodicity on all positive-domain rays |
+| [C1](FormalConjectures/Paper/C1.lean) | 2 | Classification and eventual periodicity on positive-domain rays |
+| [O2](FormalConjectures/Paper/O2.lean) | 2 | Absence when both parameters are at least two, and eventual periodicity on rays |
+| [D14](FormalConjectures/Paper/D14.lean) | 1 | Eventual periodicity on positive-domain rays |
+| [E10](FormalConjectures/Paper/E10.lean) | 2 | Classification for `r ≥ 2`; eventual periodicity on rays also includes `r = 1` |
 | [Heesch](FormalConjectures/Paper/Heesch.lean) | 6 | Conditional Hh/Hc CNF soundness on square, hexagon and triangle grids |
-| [D12](FormalConjectures/Paper/D12.lean) | 2 | Classification for `r,s ≥ 1`, and periodicity on all positive-domain rays |
+| [D12](FormalConjectures/Paper/D12.lean) | 2 | Classification for `r,s ≥ 1`, and eventual periodicity on all positive-domain rays |
 
-[claims.json](claims.json) lists each declaration, its Lean statement and its public
-proof location. [manifest.json](manifest.json) records source commits and hashes.
+[claims.json](claims.json) lists each declaration, its Lean statement, its own scope
+and its public proof location. Shared file scopes are listed separately in `file_scopes`.
+[manifest.json](manifest.json) records source commits and hashes.
 [CORRESPONDENCE.md](CORRESPONDENCE.md) maps the source and local declarations.
 
 ## Build a checkout
@@ -103,7 +104,16 @@ python3 -B tools/check.py --problem D12 --evidence .build/d12-check
 Omit `--problem D12` to check all nine files. Each original and normalized file is
 elaborated in its own environment. The checker compares the serialized theorem-type
 expressions. Its per-file limit is ten minutes and 3 GiB sampled RSS, with one Lean
-process at a time. Detailed generated logs stay in ignored `.build/` folders.
+process at a time. The default Lean memory threshold is also 3072 MiB. A full run
+on macOS required higher limits for AffineRays; with enough free memory, use:
+
+```sh
+python3 -B tools/check.py --lean-memory-mib 4096 --rss-limit-mib 4608
+```
+
+These options permit up to 4 GiB for Lean's memory threshold and 4.5 GiB sampled
+RSS. The checker rejects larger values and records the chosen limits in its receipt.
+Detailed generated logs stay in ignored `.build/` folders.
 The [public summary](checks/statement-correspondence.json) records the earlier
 checks of all 18 type pairs.
 
@@ -112,7 +122,8 @@ checks of all 18 type pairs.
 The checks establish source correspondence, parsed metadata and successful
 elaboration. They do not execute the mathematical proofs in the linked repositories,
 provide a new proof or amount to human expert review. The `research solved` category
-records the public proof location; the local `sorry` body remains a placeholder.
+marks solved status; the separate `formal_proof` attribute records the public proof
+location. The local `sorry` body remains a placeholder.
 
 The formal affine-ray statement has explicit hypotheses. Its source paper's step
 from geometric assumptions to those hypotheses is a prose correspondence lemma.

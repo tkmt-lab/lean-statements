@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "checked_date_utc": "2026-10-23",
+  "kind": "statement-package-review-corrections",
+  "result": "PASS",
+  "linked_proofs_executed": false,
+  "semantic_scope_review": "Each prose scope was manually compared with its declaration type; shared file scopes are separate. This is not an independent mathematical proof or human review.",
+  "source_files_unchanged": {
+    "FormalConjectures/Paper/A3.lean": "4131c490dcf363aeba83af516824ebe85d23f8031a9b0e68ea712d2979f1c759",
+    "FormalConjectures/Paper/AffineRays.lean": "b8288527182d5ecbe3de12ceb8398bc961f1d6267a45b52fe98629178c370897",
+    "FormalConjectures/Paper/K3.lean": "0de9a736800b27c81a2edb1ae680e9f94b5f8d76fde09d6618ddbee2db5cbf2d",
+    "FormalConjectures/Paper/C1.lean": "bffccfa6b87ccf1c99501c1f91a4e283487d533c9b66254c170e7e73fa803077",
+    "FormalConjectures/Paper/O2.lean": "26922525051e93bea02ab093243aa4ee7e4a27472f104cc59a12042283249c0a",
+    "FormalConjectures/Paper/D14.lean": "81272f29229d0322f5625bb4f2458bcce8cf8d2fca4ca7dca44346f21d1e856e",
+    "FormalConjectures/Paper/E10.lean": "74d5d13b38a40e1643f33ccd94f0ccb0d3c08ba38ef7c73346eeb971a1fc12fb",
+    "FormalConjectures/Paper/Heesch.lean": "a295542046511a0f65295015c69906c8269b056f192bd428e4d22eb9f9ba0973",
+    "FormalConjectures/Paper/D12.lean": "bed57f1beea095f4ef910e6d67a08d32510c1f39ddc16ee05c6bc69fafa52155"
+  },
+  "support_files_unchanged": {
+    "support/FormalConjecturesUtil/Attributes/AMS.lean": "e5a6b4b0cd42e1ad11e84b75bd89f78a9797a98e5b23d8b956f13190b9078d96",
+    "support/FormalConjecturesUtil/Attributes/Basic.lean": "0ecdf87713c3f9141b60572eb62b9a9a28ccbc7a56739c73a1e3116a119d92d0",
+    "support/FormalConjecturesUtil.lean": "809647e2daccc3ce87d0ee806c758fa50506231aa9e1f9cb4ca964370d7e7383"
+  },
+  "claims_sha256": "a30751da4fc2cb61ec0208ac6ca6e5fcd6cfc701a8f4a0e3c7664b90589e3161",
+  "checker_sha256": {
+    "tools/check.py": "202a6d915ad141bbcb6ded801e153df88ab7c6baeddcc22a567dc354ebb346bd",
+    "tools/check_claims.py": "f06c873a44b02a75e356eff6ea751a1cc255f28e174009bc2df947a3e7316e35",
+    "tools/build.py": "cacc809c22f44322ff0e5cace648945a2eacfd03c168d5857258a0a4023d40a0"
+  },
+  "build": {
+    "result": "PASS",
+    "command": "python3 -B tools/build.py --evidence .build/review-fix/lake",
+    "dependency_preflight_seconds": 43.406,
+    "package_build_seconds": 83.485,
+    "maximum_sampled_process_group_rss_kib": 3077664,
+    "maximum_lean_processes": 1,
+    "intentional_sorry_warnings": 18,
+    "compiled_local_modules": 12,
+    "problem_modules": 9
+  },
+  "typecheck": {
+    "result": "PASS",
+    "command": "python3 -B tools/check.py --lean-memory-mib 4096 --rss-limit-mib 4608 --evidence .build/review-fix/typecheck-final",
+    "constraints": {
+      "sequential": true,
+      "nice": 10,
+      "lean_threads": 1,
+      "lean_memory_mib": 4096,
+      "rss_limit_mib": 4608,
+      "per_file_timeout_seconds": 600
+    },
+    "lean_invocations": 21,
+    "sum_invocation_seconds": 212.785,
+    "maximum_sampled_rss_kib": 3164640,
+    "comparisons": [
+      {
+        "problem": "A3",
+        "declaration": "ClaudeChallenge.main",
+        "lean_expr_repr_sha256": "74fd43df5999ec5052583b46eab251c6fb24f817bf7002b51609ebdfee4d992f",
+        "type_equal": true
+      },
+      {
+        "problem": "AffineRays",
+        "declaration": "ClaudeChallenge2.main",
+        "lean_expr_repr_sha256": "efdfae0d29d5b804762eaa57531ac95635f99adfc5aee94739a4a69bf4051d0c",
+        "type_equal": true
+      },
+      {
+        "problem": "K3",
+        "declaration": "ClaudeChallengeK3.main",
+        "lean_expr_repr_sha256": "ae2509325e3a3a83f2f284a123e8ad85e316a3f28dd24f89623ff909a9a5c40a",
+        "type_equal": true
+      },
+      {
+        "problem": "C1",
+        "declaration": "ClaudeChallengeC1.classification",
+        "lean_expr_repr_sha256": "a98429f54619a0b5b753b6b5141a8642cfe70e347cd57262a7cb0c1e6d58fddd",
+        "type_equal": true
+      },
+      {
+        "problem": "C1",
+        "declaration": "ClaudeChallengeC1.main",
+        "lean_expr_repr_sha256": "312e45cf79801d2c6489c79563cc6cc71f32f0eb9580ceed00297c3deb9ad520",
+        "type_equal": true
+      },
+      {
+        "problem": "O2",
+        "declaration": "ClaudeChallengeO2.classification",
+        "lean_expr_repr_sha256": "fb7137ed5d0febcca1004187134e5be5807ce2a137e5bdac265269805271938b",
+        "type_equal": true
+      },
+      {
+        "problem": "O2",
+        "declaration": "ClaudeChallengeO2.main",
+        "lean_expr_repr_sha256": "b34cd3796fb6b9e7de907a2cad7a69a62efda2d673f27bd8fce6df821051be55",
+        "type_equal": true
+      },
+      {
+        "problem": "D14",
+        "declaration": "ClaudeChallengeD14.main",
+        "lean_expr_repr_sha256": "7f3039ef0c760cdc42dc6a22dc3a80d7e6671fe5b8aefb0582b1e18fa2217481",
+        "type_equal": true
+      },
+      {
+        "problem": "E10",
+        "declaration": "ClaudeChallengeE10.classification",
+        "lean_expr_repr_sha256": "290949d2de486313fd3f8a37419372fbcec9e0234e23defac9110788db1f6b28",
+        "type_equal": true
+      },
+      {
+        "problem": "E10",
+        "declaration": "ClaudeChallengeE10.main",
+        "lean_expr_repr_sha256": "71cd35e54012aea597a5d66d45c1b270d9bd2472805d30d256f13c9bf4b5570f",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hh_sound_square",
+        "lean_expr_repr_sha256": "656a5907b5eaf7e13fa6873ebcd176fcde9b90d765145bb5e34c74c768be37e6",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hc_sound_square",
+        "lean_expr_repr_sha256": "dcb12975f92b38276c941e5a7fd28268cf5e33f623b7576fa2b7612b4e0cce03",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hh_sound_hex",
+        "lean_expr_repr_sha256": "f34d288b1ef4642b68200c563dac8d6ccacc31975c503227f6a0a12020ff0a18",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hc_sound_hex",
+        "lean_expr_repr_sha256": "bab6eeaa7c040095633eb4cad020bd152bf676d0855a761efe1751bc0a093347",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hh_sound_tri",
+        "lean_expr_repr_sha256": "7bcc7e68a42f49e2df52e0b742d9424e1850c931e5ae915bd07289ca6dfc79e4",
+        "type_equal": true
+      },
+      {
+        "problem": "Heesch",
+        "declaration": "Heesch.hc_sound_tri",
+        "lean_expr_repr_sha256": "8b68874aea4643be875d44258f3cfb4d00501234a9a451d0bbbc66d5d2512f83",
+        "type_equal": true
+      },
+      {
+        "problem": "D12",
+        "declaration": "ClaudeChallengeD12.classification",
+        "lean_expr_repr_sha256": "1f238a5f03c50ec27c10b9b8cdc384d5468719230061edec1d9cb72c235ba23a",
+        "type_equal": true
+      },
+      {
+        "problem": "D12",
+        "declaration": "ClaudeChallengeD12.main",
+        "lean_expr_repr_sha256": "48edb1aeb0784bf5e1b541f167947a25e59376bcff3a2020500dcb5b19be1108",
+        "type_equal": true
+      }
+    ],
+    "parsed_solved_and_proof_links_checked": true,
+    "matches_preexisting_type_hashes": true
+  },
+  "earlier_stopped_attempts": [
+    {
+      "rss_limit_mib": 3072,
+      "lean_memory_mib": 3072,
+      "stage": "AffineRays-original",
+      "exit_code": -15,
+      "maximum_sampled_rss_kib": 3147424,
+      "reason": "Stopped by the sampled RSS guard."
+    },
+    {
+      "rss_limit_mib": 4096,
+      "lean_memory_mib": 3072,
+      "stage": "AffineRays-normalized",
+      "exit_code": -6,
+      "maximum_sampled_rss_kib": 3174592,
+      "reason": "Lean memory_exception at the interpreter; no type mismatch reported."
+    }
+  ],
+  "limitations": [
+    "The complete final type check used explicitly higher memory limits; the default 3072 MiB limits did not complete on this run.",
+    "Published proof closures were not executed.",
+    "Ubuntu CI and network dependency download were not tested.",
+    "The upstream Lean 4.33.1 toolchain and full formal-conjectures linter suite were not tested."
+  ]
+}

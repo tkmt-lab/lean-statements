@@ -34,10 +34,37 @@ build all nine modules within a 15-minute job timeout. It has not been run as pa
 of this local preparation. Its success and network/cache timing remain to be checked
 when the repository is hosted.
 
+## Review corrections, 23 October 2026
+
+The family summaries now say eventual periodicity. Each claim record has a scope
+for its own theorem; shared file descriptions are in `file_scopes`. The solved
+category and proof-link attribute are described separately, and the licensing
+records for A3 and GSW point to their own licensing documents. The nine Lean files,
+their 18 theorem types and proof links, and the three support modules did not change.
+
+A cached build in the package directory compiled the three support modules and
+nine problem modules from source. Dependency preflight took 43.406 seconds and
+the package build 83.485 seconds, with 18 intentional `sorry` warnings. Peak
+sampled process-group RSS was 3,077,664 KiB; at most one Lean process ran at a time.
+
+The full source/local type comparison and parsed-attribute checks passed for all
+18 theorem declarations. This run explicitly used
+`--lean-memory-mib 4096 --rss-limit-mib 4608`; its 21 serial Lean invocations took
+212.785 seconds in total,
+with a peak sampled RSS of 3,164,640 KiB. Every type hash matched the earlier record.
+The [receipt](checks/review-corrections.json) records the exact commands and limits.
+
+Two earlier attempts stopped while checking AffineRays: the first exceeded the
+default 3 GiB sampled RSS limit, and the second reached Lean's default 3072 MiB
+memory threshold. These were resource failures, not type mismatches. The checker
+still defaults to those limits; larger limits must be requested explicitly and
+cannot exceed 4096 MiB for Lean or 4608 MiB sampled RSS. No linked proof was executed.
+
 ## Interpretation
 
 The checks establish source correspondence, parsed metadata and successful
 elaboration. They do not execute the published mathematical proof closures. The
-`research solved` attributes identify those proofs; the local theorem bodies remain
-`sorry`. No independent new proof or human expert review is claimed. The upstream
+`research solved` category marks solved status; the separate `formal_proof`
+attribute links to the proof. The local theorem bodies remain `sorry`.
+No independent new proof or human expert review is claimed. The upstream
 Lean 4.33.1 toolchain and full formal-conjectures linter suite were not checked.

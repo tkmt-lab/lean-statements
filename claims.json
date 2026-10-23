@@ -15,6 +15,44 @@
     "The package provides an independent new proof or human expert review.",
     "Compatibility with upstream Lean 4.33.1 or its full linter suite."
   ],
+  "file_scopes": {
+    "A3": {
+      "file": "FormalConjectures/Paper/A3.lean",
+      "scope": "Full A3 classification for 0 < l < k; literal Definition 1(a), not a classification of all fullerenes."
+    },
+    "AffineRays": {
+      "file": "FormalConjectures/Paper/AffineRays.lean",
+      "scope": "Specification-level eventual periodicity under Valid and TrianglesInCharts. The bridge from the paper geometric hypotheses is prose, not a Lean theorem."
+    },
+    "K3": {
+      "file": "FormalConjectures/Paper/K3.lean",
+      "scope": "Eventual periodicity on every positive-domain affine ray, including boundary rays with one parameter equal to 1. No K3 classification declaration is included."
+    },
+    "C1": {
+      "file": "FormalConjectures/Paper/C1.lean",
+      "scope": "Classification for r,s >= 1 and eventual periodicity on positive-domain rays; the IPR clause is outside these statements."
+    },
+    "O2": {
+      "file": "FormalConjectures/Paper/O2.lean",
+      "scope": "Absence for t,d >= 2; eventual periodicity for rays starting in t,d >= 1. No extra existence cases are asserted."
+    },
+    "D14": {
+      "file": "FormalConjectures/Paper/D14.lean",
+      "scope": "Eventual periodicity on positive-domain rays only. The supporting no-path lemma is not added as a separate challenge statement."
+    },
+    "E10": {
+      "file": "FormalConjectures/Paper/E10.lean",
+      "scope": "Classification for p,s >= 1 and r >= 2; eventual periodicity on positive-domain rays includes r = 1. No r = 1 closed classification is asserted."
+    },
+    "Heesch": {
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions."
+    },
+    "D12": {
+      "file": "FormalConjectures/Paper/D12.lean",
+      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained."
+    }
+  },
   "claims": [
     {
       "id": "A3.main",
@@ -22,7 +60,7 @@
       "declaration": "ClaudeChallenge.main",
       "file": "FormalConjectures/Paper/A3.lean",
       "line": 175,
-      "statement_lean": "theorem main (k l : \u2115) (hl : 0 < l) (hlk : l < k) :\n    (\u2203 n p, LiteralPath (gcGraph k l) n p) \u2194 criterion k l",
+      "statement_lean": "theorem main (k l : ℕ) (hl : 0 < l) (hlk : l < k) :\n    (∃ n p, LiteralPath (gcGraph k l) n p) ↔ criterion k l",
       "scope": "Full A3 classification for 0 < l < k; literal Definition 1(a), not a classification of all fullerenes.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
@@ -51,7 +89,7 @@
       "declaration": "ClaudeChallenge2.main",
       "file": "FormalConjectures/Paper/AffineRays.lean",
       "line": 215,
-      "statement_lean": "theorem main (S : Sig) (t\u2081 : \u2115) (hval : \u2200 t, t\u2081 \u2264 t \u2192 Valid S t \u2227 TrianglesInCharts S t) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t, t\u2080 \u2264 t \u2192 (PathExists S t \u2194 PathExists S (t + P))",
+      "statement_lean": "theorem main (S : Sig) (t₁ : ℕ) (hval : ∀ t, t₁ ≤ t → Valid S t ∧ TrianglesInCharts S t) :\n    ∃ t₀ P : ℕ, 0 < P ∧ ∀ t, t₀ ≤ t → (PathExists S t ↔ PathExists S (t + P))",
       "scope": "Specification-level eventual periodicity under Valid and TrianglesInCharts. The bridge from the paper geometric hypotheses is prose, not a Lean theorem.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
@@ -80,8 +118,8 @@
       "declaration": "ClaudeChallengeK3.main",
       "file": "FormalConjectures/Paper/K3.lean",
       "line": 212,
-      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t : \u2115, t\u2080 \u2264 t \u2192\n      (PathExists (r\u2080 + a * t) (s\u2080 + b * t) \u2194\n        PathExists (r\u2080 + a * (t + P)) (s\u2080 + b * (t + P)))",
-      "scope": "Every positive-domain affine ray, including boundary rays with one parameter equal to 1. No new K3 classification declaration is added.",
+      "statement_lean": "theorem main (r₀ s₀ a b : ℕ) (hr : 1 ≤ r₀) (hs : 1 ≤ s₀) :\n    ∃ t₀ P : ℕ, 0 < P ∧ ∀ t : ℕ, t₀ ≤ t →\n      (PathExists (r₀ + a * t) (s₀ + b * t) ↔\n        PathExists (r₀ + a * (t + P)) (s₀ + b * (t + P)))",
+      "scope": "Eventual periodicity of PathExists on every natural affine ray with both starting parameters >= 1 and nonnegative slopes, including constant rays and rays with a parameter fixed at 1. No K3 classification is asserted by this declaration.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -109,8 +147,8 @@
       "declaration": "ClaudeChallengeC1.classification",
       "file": "FormalConjectures/Paper/C1.lean",
       "line": 198,
-      "statement_lean": "theorem classification (r s : \u2115) (hr : 1 \u2264 r) (hs : 1 \u2264 s) : PathExists r s \u2194 s = 1",
-      "scope": "Classification for r,s >= 1 and positive-domain rays; the IPR clause is outside this statement.",
+      "statement_lean": "theorem classification (r s : ℕ) (hr : 1 ≤ r) (hs : 1 ≤ s) : PathExists r s ↔ s = 1",
+      "scope": "For natural r,s >= 1, PathExists r s holds if and only if s = 1. The IPR clause is outside this statement.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -138,8 +176,8 @@
       "declaration": "ClaudeChallengeC1.main",
       "file": "FormalConjectures/Paper/C1.lean",
       "line": 205,
-      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t : \u2115, t\u2080 \u2264 t \u2192\n      (PathExists (r\u2080 + a * t) (s\u2080 + b * t) \u2194\n        PathExists (r\u2080 + a * (t + P)) (s\u2080 + b * (t + P)))",
-      "scope": "Classification for r,s >= 1 and positive-domain rays; the IPR clause is outside this statement.",
+      "statement_lean": "theorem main (r₀ s₀ a b : ℕ) (hr : 1 ≤ r₀) (hs : 1 ≤ s₀) :\n    ∃ t₀ P : ℕ, 0 < P ∧ ∀ t : ℕ, t₀ ≤ t →\n      (PathExists (r₀ + a * t) (s₀ + b * t) ↔\n        PathExists (r₀ + a * (t + P)) (s₀ + b * (t + P)))",
+      "scope": "Eventual periodicity of PathExists on every natural affine ray with r0,s0 >= 1 and nonnegative slopes, including constant rays. This declaration is a ray result, not the separate C1 classification.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -167,8 +205,8 @@
       "declaration": "ClaudeChallengeO2.classification",
       "file": "FormalConjectures/Paper/O2.lean",
       "line": 210,
-      "statement_lean": "theorem classification (t d : \u2115) (ht : 2 \u2264 t) (hd : 2 \u2264 d) : \u00ac PathExists t d",
-      "scope": "Absence for t,d >= 2; periodicity for rays starting in t,d >= 1. No extra existence cases are asserted.",
+      "statement_lean": "theorem classification (t d : ℕ) (ht : 2 ≤ t) (hd : 2 ≤ d) : ¬ PathExists t d",
+      "scope": "For natural t,d >= 2, PathExists t d does not hold. No extra existence cases are asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -196,8 +234,8 @@
       "declaration": "ClaudeChallengeO2.main",
       "file": "FormalConjectures/Paper/O2.lean",
       "line": 217,
-      "statement_lean": "theorem main (t\u2080 d\u2080 a b : \u2115) (ht : 1 \u2264 t\u2080) (hd : 1 \u2264 d\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (t\u2080 + a * n) (d\u2080 + b * n) \u2194\n        PathExists (t\u2080 + a * (n + P)) (d\u2080 + b * (n + P)))",
-      "scope": "Absence for t,d >= 2; periodicity for rays starting in t,d >= 1. No extra existence cases are asserted.",
+      "statement_lean": "theorem main (t₀ d₀ a b : ℕ) (ht : 1 ≤ t₀) (hd : 1 ≤ d₀) :\n    ∃ n₀ P : ℕ, 0 < P ∧ ∀ n : ℕ, n₀ ≤ n →\n      (PathExists (t₀ + a * n) (d₀ + b * n) ↔\n        PathExists (t₀ + a * (n + P)) (d₀ + b * (n + P)))",
+      "scope": "Eventual periodicity of PathExists on every natural affine ray with t0,d0 >= 1 and nonnegative slopes, including constant rays and parameter-one boundaries.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -225,8 +263,8 @@
       "declaration": "ClaudeChallengeD14.main",
       "file": "FormalConjectures/Paper/D14.lean",
       "line": 210,
-      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (r\u2080 + a * n) (s\u2080 + b * n) \u2194\n        PathExists (r\u2080 + a * (n + P)) (s\u2080 + b * (n + P)))",
-      "scope": "Positive-domain ray periodicity only. The supporting no-path lemma is not added as a new challenge statement.",
+      "statement_lean": "theorem main (r₀ s₀ a b : ℕ) (hr : 1 ≤ r₀) (hs : 1 ≤ s₀) :\n    ∃ n₀ P : ℕ, 0 < P ∧ ∀ n : ℕ, n₀ ≤ n →\n      (PathExists (r₀ + a * n) (s₀ + b * n) ↔\n        PathExists (r₀ + a * (n + P)) (s₀ + b * (n + P)))",
+      "scope": "Eventual periodicity of PathExists on every natural affine ray with positive starting parameters and nonnegative slopes. The supporting no-path lemma is not a separate challenge statement here.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -254,8 +292,8 @@
       "declaration": "ClaudeChallengeE10.classification",
       "file": "FormalConjectures/Paper/E10.lean",
       "line": 254,
-      "statement_lean": "theorem classification (p r s : \u2115) (hp : 1 \u2264 p) (hr : 2 \u2264 r) (hs : 1 \u2264 s) :\n    PathExists p r s \u2194\n      \u2203 d : \u2124, (d = 0 \u2228 d = r \u2228 d = r + s) \u2227\n        ((p : \u2124) \u2261 d + 1 [ZMOD 2 * r + s] \u2228 (p : \u2124) \u2261 d - 1 [ZMOD 2 * r + s])",
-      "scope": "Classification for p,s >= 1 and r >= 2; positive-domain ray periodicity includes r = 1. No r = 1 closed classification is asserted.",
+      "statement_lean": "theorem classification (p r s : ℕ) (hp : 1 ≤ p) (hr : 2 ≤ r) (hs : 1 ≤ s) :\n    PathExists p r s ↔\n      ∃ d : ℤ, (d = 0 ∨ d = r ∨ d = r + s) ∧\n        ((p : ℤ) ≡ d + 1 [ZMOD 2 * r + s] ∨ (p : ℤ) ≡ d - 1 [ZMOD 2 * r + s])",
+      "scope": "For natural p,s >= 1 and r >= 2, PathExists p r s holds if and only if p is congruent to d+1 or d-1 modulo 2*r+s for some integer d in {0,r,r+s}. No closed classification for r = 1 is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -283,8 +321,8 @@
       "declaration": "ClaudeChallengeE10.main",
       "file": "FormalConjectures/Paper/E10.lean",
       "line": 264,
-      "statement_lean": "theorem main (p\u2080 r\u2080 s\u2080 a b c : \u2115) (hp : 1 \u2264 p\u2080) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (p\u2080 + a * n) (r\u2080 + b * n) (s\u2080 + c * n) \u2194\n        PathExists (p\u2080 + a * (n + P)) (r\u2080 + b * (n + P)) (s\u2080 + c * (n + P)))",
-      "scope": "Classification for p,s >= 1 and r >= 2; positive-domain ray periodicity includes r = 1. No r = 1 closed classification is asserted.",
+      "statement_lean": "theorem main (p₀ r₀ s₀ a b c : ℕ) (hp : 1 ≤ p₀) (hr : 1 ≤ r₀) (hs : 1 ≤ s₀) :\n    ∃ n₀ P : ℕ, 0 < P ∧ ∀ n : ℕ, n₀ ≤ n →\n      (PathExists (p₀ + a * n) (r₀ + b * n) (s₀ + c * n) ↔\n        PathExists (p₀ + a * (n + P)) (r₀ + b * (n + P)) (s₀ + c * (n + P)))",
+      "scope": "Eventual periodicity of PathExists on every natural affine ray in (p,r,s), with p0,r0,s0 >= 1 and nonnegative slopes. Includes r = 1 boundary rays and constant rays.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -312,8 +350,8 @@
       "declaration": "Heesch.hh_sound_square",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 568,
-      "statement_lean": "theorem hh_sound_square (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid squareGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh squareGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hh_sound_square (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid squareGrid (K - 1))\n    (hunsat : ¬ Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHh squareGrid S.toFinset K tiles",
+      "scope": "On the square grid (squareGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for squareGrid at K-1, unsatisfiability of cnfOrd squareGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hh sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -341,8 +379,8 @@
       "declaration": "Heesch.hc_sound_square",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 578,
-      "statement_lean": "theorem hc_sound_square (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid squareGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc squareGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hc_sound_square (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid squareGrid K)\n    (hunsat : ¬ Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHc squareGrid S.toFinset K tiles",
+      "scope": "On the square grid (squareGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for squareGrid at K, unsatisfiability of cnfOrd squareGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hc sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -370,8 +408,8 @@
       "declaration": "Heesch.hh_sound_hex",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 588,
-      "statement_lean": "theorem hh_sound_hex (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid hexGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh hexGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hh_sound_hex (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid hexGrid (K - 1))\n    (hunsat : ¬ Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHh hexGrid S.toFinset K tiles",
+      "scope": "On the hexagon grid (hexGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for hexGrid at K-1, unsatisfiability of cnfOrd hexGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hh sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -399,8 +437,8 @@
       "declaration": "Heesch.hc_sound_hex",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 598,
-      "statement_lean": "theorem hc_sound_hex (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid hexGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc hexGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hc_sound_hex (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid hexGrid K)\n    (hunsat : ¬ Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHc hexGrid S.toFinset K tiles",
+      "scope": "On the hexagon grid (hexGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for hexGrid at K, unsatisfiability of cnfOrd hexGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hc sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -428,8 +466,8 @@
       "declaration": "Heesch.hh_sound_tri",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 608,
-      "statement_lean": "theorem hh_sound_tri (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid triGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh triGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hh_sound_tri (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid triGrid (K - 1))\n    (hunsat : ¬ Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHh triGrid S.toFinset K tiles",
+      "scope": "On the triangle grid (triGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for triGrid at K-1, unsatisfiability of cnfOrd triGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hh sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -457,8 +495,8 @@
       "declaration": "Heesch.hc_sound_tri",
       "file": "FormalConjectures/Paper/Heesch.lean",
       "line": 618,
-      "statement_lean": "theorem hc_sound_tri (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid triGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc triGrid S.toFinset K tiles",
-      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "statement_lean": "theorem hc_sound_tri (ord : Cell → List ℤ → List ℤ) (hord : ∀ c g, (ord c g).Perm g)\n    (S : List Cell) (K : ℕ) (hK : 1 ≤ K) (blocks : List HoleBlock)\n    (hblocks : ∀ b ∈ blocks, b.Valid triGrid K)\n    (hunsat : ¬ Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    ¬ ∃ tiles : Tiles, IsCoronaHc triGrid S.toFinset K tiles",
+      "scope": "On the triangle grid (triGrid), for any cell list S, K >= 1, counter-input ordering ord that preserves each input list up to permutation, and hole blocks valid for triGrid at K, unsatisfiability of cnfOrd triGrid ord S K blocks implies that S.toFinset has no K-layer corona in the Hc sense. Unsatisfiability is a hypothesis; no numerical Heesch value or certificate execution is asserted.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/heesch-certificates",
@@ -486,8 +524,8 @@
       "declaration": "ClaudeChallengeD12.classification",
       "file": "FormalConjectures/Paper/D12.lean",
       "line": 212,
-      "statement_lean": "theorem classification (r s : \u2115) (hr : 1 \u2264 r) (hs : 1 \u2264 s) :\n    PathExists r s \u2194\n      ((r : \u2124) \u2223 (s : \u2124) - 1 \u2228 (r : \u2124) \u2223 (s : \u2124) + 1 \u2228 |(r : \u2124) - 3 * (s : \u2124)| = 1)",
-      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained.",
+      "statement_lean": "theorem classification (r s : ℕ) (hr : 1 ≤ r) (hs : 1 ≤ s) :\n    PathExists r s ↔\n      ((r : ℤ) ∣ (s : ℤ) - 1 ∨ (r : ℤ) ∣ (s : ℤ) + 1 ∨ |(r : ℤ) - 3 * (s : ℤ)| = 1)",
+      "scope": "For natural r,s >= 1, PathExists r s holds if and only if, after casting to integers, r divides s-1, r divides s+1, or abs(r-3*s) = 1. This declaration does not state the separate ray result; the explicit quotient-model definitions are retained.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
@@ -515,8 +553,8 @@
       "declaration": "ClaudeChallengeD12.main",
       "file": "FormalConjectures/Paper/D12.lean",
       "line": 221,
-      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (r\u2080 + a * n) (s\u2080 + b * n) \u2194\n        PathExists (r\u2080 + a * (n + P)) (s\u2080 + b * (n + P)))",
-      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained.",
+      "statement_lean": "theorem main (r₀ s₀ a b : ℕ) (hr : 1 ≤ r₀) (hs : 1 ≤ s₀) :\n    ∃ n₀ P : ℕ, 0 < P ∧ ∀ n : ℕ, n₀ ≤ n →\n      (PathExists (r₀ + a * n) (s₀ + b * n) ↔\n        PathExists (r₀ + a * (n + P)) (s₀ + b * (n + P)))",
+      "scope": "Eventual periodicity of PathExists along every natural affine ray (r0+a*n,s0+b*n), with r0,s0 >= 1 and a,b >= 0. A positive period is asserted after some threshold; parameter-one boundaries and constant rays are included. This declaration does not state the separate closed classification.",
       "body": "by sorry (intentional statement placeholder)",
       "source": {
         "repository": "tkmt-lab/gsw-ray-periodicity",
