@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "platform": "macOS 26.6.2, arm64",
+  "result": "PASS",
+  "source_checkout": "new local git clone, initially without package build outputs",
+  "dependency_cache": "Existing packages at the locked revisions were copied into the clone; no symbolic links to another workspace; no dependency download was tested.",
+  "local_modules_built_from_source": 12,
+  "problem_modules_built_from_source": 9,
+  "statement_declarations": 18,
+  "intentional_sorry_warnings": 18,
+  "lean": "4.35.0",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "runs": [
+    {
+      "command": "lake --no-build --no-cache build +Mathlib +Qq",
+      "exit_code": 0,
+      "seconds": 36.178,
+      "maximum_sampled_group_rss_kib": 781040,
+      "maximum_lean_processes": 0
+    },
+    {
+      "command": "lake --no-cache build",
+      "exit_code": 0,
+      "seconds": 71.064,
+      "maximum_sampled_group_rss_kib": 3092672,
+      "maximum_lean_processes": 1
+    }
+  ],
+  "maximum_sampled_group_rss_kib": 3092672,
+  "maximum_lean_processes": 1,
+  "linked_proof_closures_executed": false,
+  "ubuntu_ci_executed": false,
+  "source_hashes": {
+    "lakefile.toml": "89160efbb777b572123126355f215f535b2c4f31100ba59c7530d29841bd7cac",
+    "lake-manifest.json": "237c60e63284f1d14fb45e7e6a3546675dcc3d59ec33661dad78b1c2fe8d3703",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "tools/build.py": "cacc809c22f44322ff0e5cace648945a2eacfd03c168d5857258a0a4023d40a0",
+    "FormalConjectures/Paper/A3.lean": "4131c490dcf363aeba83af516824ebe85d23f8031a9b0e68ea712d2979f1c759",
+    "FormalConjectures/Paper/AffineRays.lean": "b8288527182d5ecbe3de12ceb8398bc961f1d6267a45b52fe98629178c370897",
+    "FormalConjectures/Paper/K3.lean": "0de9a736800b27c81a2edb1ae680e9f94b5f8d76fde09d6618ddbee2db5cbf2d",
+    "FormalConjectures/Paper/C1.lean": "bffccfa6b87ccf1c99501c1f91a4e283487d533c9b66254c170e7e73fa803077",
+    "FormalConjectures/Paper/O2.lean": "26922525051e93bea02ab093243aa4ee7e4a27472f104cc59a12042283249c0a",
+    "FormalConjectures/Paper/D14.lean": "81272f29229d0322f5625bb4f2458bcce8cf8d2fca4ca7dca44346f21d1e856e",
+    "FormalConjectures/Paper/E10.lean": "74d5d13b38a40e1643f33ccd94f0ccb0d3c08ba38ef7c73346eeb971a1fc12fb",
+    "FormalConjectures/Paper/Heesch.lean": "a295542046511a0f65295015c69906c8269b056f192bd428e4d22eb9f9ba0973",
+    "FormalConjectures/Paper/D12.lean": "bed57f1beea095f4ef910e6d67a08d32510c1f39ddc16ee05c6bc69fafa52155"
+  },
+  "checker_smoke_test": {
+    "problem": "D12",
+    "result": "PASS",
+    "equal_type_pairs": 2,
+    "parsed_attributes": 2,
+    "seconds": 24.723,
+    "maximum_sampled_rss_kib": 1549920,
+    "checker_sha256": "8c6ca65bb5af9dc9f25fd37772d2b5473fd861c23c47014ae2bc022d0e4978d2",
+    "comparisons": [
+      {
+        "problem": "D12",
+        "declaration": "ClaudeChallengeD12.classification",
+        "lean_expr_repr_sha256": "1f238a5f03c50ec27c10b9b8cdc384d5468719230061edec1d9cb72c235ba23a",
+        "type_equal": true
+      },
+      {
+        "problem": "D12",
+        "declaration": "ClaudeChallengeD12.main",
+        "lean_expr_repr_sha256": "48edb1aeb0784bf5e1b541f167947a25e59376bcff3a2020500dcb5b19be1108",
+        "type_equal": true
+      }
+    ]
+  }
+}
