@@ -1,0 +1,42 @@
+name: Check Lean statements
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      LEAN_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source and claim correspondence
+        run: |
+          python3 -B tools/check.py --static-only
+          python3 -B tools/check_claims.py
+      - name: Restore Lean and dependency cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            .lake/packages
+          key: ${{ runner.os }}-${{ runner.arch }}-lean-statements-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
+      - name: Install elan
+        run: |
+          if [ ! -x "$HOME/.elan/bin/elan" ]; then
+            curl -sSfL https://elan.lean-lang.org/elan-init.sh | sh -s -- -y --default-toolchain none
+          fi
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Obtain prebuilt Mathlib
+        run: lake exe cache get
+      - name: Build all nine statement modules
+        run: python3 -B tools/build.py --evidence .build/ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: statement-build
+          path: .build/ci/

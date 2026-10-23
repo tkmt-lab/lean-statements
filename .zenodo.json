@@ -1,0 +1,48 @@
+{
+  "title": "Lean statements from published papers",
+  "upload_type": "software",
+  "description": "Nine independent Lean problem files containing 18 theorem statements from the published a3-gsw-classification, gsw-ray-periodicity and heesch-certificates repositories. Definitions, namespaces, hypotheses and theorem types are preserved. The theorem bodies intentionally use by sorry; formal_proof attributes link to the corresponding public proofs at fixed commits. Source reconstruction, theorem-type correspondence and parsed metadata have been checked. Elaborating these statements does not establish their truth or execute the linked proofs. The package is not an official part of formal-conjectures and has not been contributed to it. It includes its own checking tools and two unmodified Apache-2.0 attribute modules from the Formal Conjectures Authors.",
+  "creators": [
+    {
+      "name": "Tatsuhiko Takimoto",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-10-23",
+  "license": "apache-2.0",
+  "keywords": [
+    "Lean",
+    "formal statements",
+    "mathematical software",
+    "generalized Stone-Wales paths",
+    "Heesch certificates"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/tkmt-lab/lean-statements",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/tkmt-lab/a3-gsw-classification",
+      "relation": "references",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/tkmt-lab/gsw-ray-periodicity",
+      "relation": "references",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/tkmt-lab/heesch-certificates",
+      "relation": "references",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/google-deepmind/formal-conjectures",
+      "relation": "references",
+      "scheme": "url"
+    }
+  ]
+}

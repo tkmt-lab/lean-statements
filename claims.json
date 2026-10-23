@@ -1,0 +1,542 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "release_kind": [
+    "data",
+    "tool"
+  ],
+  "statement_only": true,
+  "claim_count": 18,
+  "problem_file_count": 9,
+  "not_claimed": [
+    "Elaborating sorry statements proves their truth.",
+    "This package reruns or contains the linked mathematical proofs.",
+    "This package is an official part of formal-conjectures or has been contributed to it.",
+    "The package provides an independent new proof or human expert review.",
+    "Compatibility with upstream Lean 4.33.1 or its full linter suite."
+  ],
+  "claims": [
+    {
+      "id": "A3.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallenge.main",
+      "file": "FormalConjectures/Paper/A3.lean",
+      "line": 175,
+      "statement_lean": "theorem main (k l : \u2115) (hl : 0 < l) (hlk : l < k) :\n    (\u2203 n p, LiteralPath (gcGraph k l) n p) \u2194 criterion k l",
+      "scope": "Full A3 classification for 0 < l < k; literal Definition 1(a), not a classification of all fullerenes.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/a3-gsw-classification",
+        "commit": "58124b20fa4a3b19aaa62e734c2036210f7bdcf8",
+        "url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/packet/formal/Formal/ComparatorChallengeMain.lean",
+        "sha256": "a8743de53d570cb0b1a3e4c92ea4d3456b509f6e7caadd61774e16fd41c0f1fc"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallenge.main",
+        "url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/packet/formal/Formal/ComparatorSolutionMain.lean#L7",
+        "file_sha256": "0e9ff49c891f172001e092c93dc172e5a2f814455a28718727b484409df64851",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "74fd43df5999ec5052583b46eab251c6fb24f817bf7002b51609ebdfee4d992f",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem A3"
+    },
+    {
+      "id": "AffineRays.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallenge2.main",
+      "file": "FormalConjectures/Paper/AffineRays.lean",
+      "line": 215,
+      "statement_lean": "theorem main (S : Sig) (t\u2081 : \u2115) (hval : \u2200 t, t\u2081 \u2264 t \u2192 Valid S t \u2227 TrianglesInCharts S t) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t, t\u2080 \u2264 t \u2192 (PathExists S t \u2194 PathExists S (t + P))",
+      "scope": "Specification-level eventual periodicity under Valid and TrianglesInCharts. The bridge from the paper geometric hypotheses is prose, not a Lean theorem.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/Challenge2.lean",
+        "sha256": "d2800a5c4560ce94b5f94faada54003063bcb3e38b599d32e035d23ab264a66d"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallenge2.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude3ComparatorSolution.lean#L10",
+        "file_sha256": "4061d1ed401eb044faf68d8f881783935f540823998d8711ed2ac88f6ed984f9",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "efdfae0d29d5b804762eaa57531ac95635f99adfc5aee94739a4a69bf4051d0c",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem AffineRays"
+    },
+    {
+      "id": "K3.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeK3.main",
+      "file": "FormalConjectures/Paper/K3.lean",
+      "line": 212,
+      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t : \u2115, t\u2080 \u2264 t \u2192\n      (PathExists (r\u2080 + a * t) (s\u2080 + b * t) \u2194\n        PathExists (r\u2080 + a * (t + P)) (s\u2080 + b * (t + P)))",
+      "scope": "Every positive-domain affine ray, including boundary rays with one parameter equal to 1. No new K3 classification declaration is added.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeK3.lean",
+        "sha256": "80fcf97e49d64935643d9d6a70b1d82b7eed9668559eed0ad9b0b529eb8055d8"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeK3.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4K3ComparatorSolution.lean#L23",
+        "file_sha256": "18271691603a3eee39a92aa0a2ceabf300058b527397c705b54257228bd8e689",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "ae2509325e3a3a83f2f284a123e8ad85e316a3f28dd24f89623ff909a9a5c40a",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem K3"
+    },
+    {
+      "id": "C1.classification",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeC1.classification",
+      "file": "FormalConjectures/Paper/C1.lean",
+      "line": 198,
+      "statement_lean": "theorem classification (r s : \u2115) (hr : 1 \u2264 r) (hs : 1 \u2264 s) : PathExists r s \u2194 s = 1",
+      "scope": "Classification for r,s >= 1 and positive-domain rays; the IPR clause is outside this statement.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeC1.lean",
+        "sha256": "3130ba4ea41f9bba0e1c213d47c089497b936d0eba22ae15a1c445bfc109e956"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeC1.classification",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L24",
+        "file_sha256": "581e36bb721f298fb6c3a7c297c3337595353bf026be740ac6bc3f79d4c3a05f",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "a98429f54619a0b5b753b6b5141a8642cfe70e347cd57262a7cb0c1e6d58fddd",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem C1"
+    },
+    {
+      "id": "C1.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeC1.main",
+      "file": "FormalConjectures/Paper/C1.lean",
+      "line": 205,
+      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 t\u2080 P : \u2115, 0 < P \u2227 \u2200 t : \u2115, t\u2080 \u2264 t \u2192\n      (PathExists (r\u2080 + a * t) (s\u2080 + b * t) \u2194\n        PathExists (r\u2080 + a * (t + P)) (s\u2080 + b * (t + P)))",
+      "scope": "Classification for r,s >= 1 and positive-domain rays; the IPR clause is outside this statement.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeC1.lean",
+        "sha256": "3130ba4ea41f9bba0e1c213d47c089497b936d0eba22ae15a1c445bfc109e956"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeC1.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L29",
+        "file_sha256": "581e36bb721f298fb6c3a7c297c3337595353bf026be740ac6bc3f79d4c3a05f",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "312e45cf79801d2c6489c79563cc6cc71f32f0eb9580ceed00297c3deb9ad520",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem C1"
+    },
+    {
+      "id": "O2.classification",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeO2.classification",
+      "file": "FormalConjectures/Paper/O2.lean",
+      "line": 210,
+      "statement_lean": "theorem classification (t d : \u2115) (ht : 2 \u2264 t) (hd : 2 \u2264 d) : \u00ac PathExists t d",
+      "scope": "Absence for t,d >= 2; periodicity for rays starting in t,d >= 1. No extra existence cases are asserted.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeO2.lean",
+        "sha256": "b85926f8d62ee63d539f0e55f0ee5f74179eeb223a23f596adcf8bce6f0764e1"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeO2.classification",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L27",
+        "file_sha256": "2303378bac2bb6953cad83fdec59d24a8569d96199ac6c230eee691d59aa9818",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "fb7137ed5d0febcca1004187134e5be5807ce2a137e5bdac265269805271938b",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem O2"
+    },
+    {
+      "id": "O2.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeO2.main",
+      "file": "FormalConjectures/Paper/O2.lean",
+      "line": 217,
+      "statement_lean": "theorem main (t\u2080 d\u2080 a b : \u2115) (ht : 1 \u2264 t\u2080) (hd : 1 \u2264 d\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (t\u2080 + a * n) (d\u2080 + b * n) \u2194\n        PathExists (t\u2080 + a * (n + P)) (d\u2080 + b * (n + P)))",
+      "scope": "Absence for t,d >= 2; periodicity for rays starting in t,d >= 1. No extra existence cases are asserted.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeO2.lean",
+        "sha256": "b85926f8d62ee63d539f0e55f0ee5f74179eeb223a23f596adcf8bce6f0764e1"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeO2.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L32",
+        "file_sha256": "2303378bac2bb6953cad83fdec59d24a8569d96199ac6c230eee691d59aa9818",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "b34cd3796fb6b9e7de907a2cad7a69a62efda2d673f27bd8fce6df821051be55",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem O2"
+    },
+    {
+      "id": "D14.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeD14.main",
+      "file": "FormalConjectures/Paper/D14.lean",
+      "line": 210,
+      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (r\u2080 + a * n) (s\u2080 + b * n) \u2194\n        PathExists (r\u2080 + a * (n + P)) (s\u2080 + b * (n + P)))",
+      "scope": "Positive-domain ray periodicity only. The supporting no-path lemma is not added as a new challenge statement.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeD14.lean",
+        "sha256": "d7ee8c0b82dfee819cdbd1f539236df457c4db0a8101fcbc2690515b7714c55a"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeD14.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5D14ComparatorSolution.lean#L29",
+        "file_sha256": "dd0122dec1a182b525fa655826470b46b23f06fde7a621928c0e706f23f69c83",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "7f3039ef0c760cdc42dc6a22dc3a80d7e6671fe5b8aefb0582b1e18fa2217481",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem D14"
+    },
+    {
+      "id": "E10.classification",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeE10.classification",
+      "file": "FormalConjectures/Paper/E10.lean",
+      "line": 254,
+      "statement_lean": "theorem classification (p r s : \u2115) (hp : 1 \u2264 p) (hr : 2 \u2264 r) (hs : 1 \u2264 s) :\n    PathExists p r s \u2194\n      \u2203 d : \u2124, (d = 0 \u2228 d = r \u2228 d = r + s) \u2227\n        ((p : \u2124) \u2261 d + 1 [ZMOD 2 * r + s] \u2228 (p : \u2124) \u2261 d - 1 [ZMOD 2 * r + s])",
+      "scope": "Classification for p,s >= 1 and r >= 2; positive-domain ray periodicity includes r = 1. No r = 1 closed classification is asserted.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeE10.lean",
+        "sha256": "d057a0882ce28b4a9321674bdc21bf56ec767a1fd07ceff01551602d231b25d0"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeE10.classification",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L31",
+        "file_sha256": "a1fef612cbb2d1e1b06f1102e09b46dc8dfa112c6e78cd0031a3af202907bc2d",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "290949d2de486313fd3f8a37419372fbcec9e0234e23defac9110788db1f6b28",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem E10"
+    },
+    {
+      "id": "E10.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeE10.main",
+      "file": "FormalConjectures/Paper/E10.lean",
+      "line": 264,
+      "statement_lean": "theorem main (p\u2080 r\u2080 s\u2080 a b c : \u2115) (hp : 1 \u2264 p\u2080) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (p\u2080 + a * n) (r\u2080 + b * n) (s\u2080 + c * n) \u2194\n        PathExists (p\u2080 + a * (n + P)) (r\u2080 + b * (n + P)) (s\u2080 + c * (n + P)))",
+      "scope": "Classification for p,s >= 1 and r >= 2; positive-domain ray periodicity includes r = 1. No r = 1 closed classification is asserted.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeE10.lean",
+        "sha256": "d057a0882ce28b4a9321674bdc21bf56ec767a1fd07ceff01551602d231b25d0"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeE10.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L40",
+        "file_sha256": "a1fef612cbb2d1e1b06f1102e09b46dc8dfa112c6e78cd0031a3af202907bc2d",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "71cd35e54012aea597a5d66d45c1b270d9bd2472805d30d256f13c9bf4b5570f",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem E10"
+    },
+    {
+      "id": "Heesch.hh_sound_square",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hh_sound_square",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 568,
+      "statement_lean": "theorem hh_sound_square (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid squareGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh squareGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hh_sound_square",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L21",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "656a5907b5eaf7e13fa6873ebcd176fcde9b90d765145bb5e34c74c768be37e6",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "Heesch.hc_sound_square",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hc_sound_square",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 578,
+      "statement_lean": "theorem hc_sound_square (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid squareGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd squareGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc squareGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hc_sound_square",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L29",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "dcb12975f92b38276c941e5a7fd28268cf5e33f623b7576fa2b7612b4e0cce03",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "Heesch.hh_sound_hex",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hh_sound_hex",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 588,
+      "statement_lean": "theorem hh_sound_hex (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid hexGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh hexGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hh_sound_hex",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L37",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "f34d288b1ef4642b68200c563dac8d6ccacc31975c503227f6a0a12020ff0a18",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "Heesch.hc_sound_hex",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hc_sound_hex",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 598,
+      "statement_lean": "theorem hc_sound_hex (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid hexGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd hexGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc hexGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hc_sound_hex",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L45",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "bab6eeaa7c040095633eb4cad020bd152bf676d0855a761efe1751bc0a093347",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "Heesch.hh_sound_tri",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hh_sound_tri",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 608,
+      "statement_lean": "theorem hh_sound_tri (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid triGrid (K - 1))\n    (hunsat : \u00ac Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHh triGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hh_sound_tri",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L53",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "7bcc7e68a42f49e2df52e0b742d9424e1850c931e5ae915bd07289ca6dfc79e4",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "Heesch.hc_sound_tri",
+      "kind": "published-lean-statement",
+      "declaration": "Heesch.hc_sound_tri",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "line": 618,
+      "statement_lean": "theorem hc_sound_tri (ord : Cell \u2192 List \u2124 \u2192 List \u2124) (hord : \u2200 c g, (ord c g).Perm g)\n    (S : List Cell) (K : \u2115) (hK : 1 \u2264 K) (blocks : List HoleBlock)\n    (hblocks : \u2200 b \u2208 blocks, b.Valid triGrid K)\n    (hunsat : \u00ac Satisfiable (cnfOrd triGrid ord S K blocks)) :\n    \u00ac \u2203 tiles : Tiles, IsCoronaHc triGrid S.toFinset K tiles",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/heesch-certificates",
+        "commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+        "sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "Heesch.hc_sound_tri",
+        "url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L61",
+        "file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "8b68874aea4643be875d44258f3cfb4d00501234a9a451d0bbbc66d5d2512f83",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem Heesch"
+    },
+    {
+      "id": "D12.classification",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeD12.classification",
+      "file": "FormalConjectures/Paper/D12.lean",
+      "line": 212,
+      "statement_lean": "theorem classification (r s : \u2115) (hr : 1 \u2264 r) (hs : 1 \u2264 s) :\n    PathExists r s \u2194\n      ((r : \u2124) \u2223 (s : \u2124) - 1 \u2228 (r : \u2124) \u2223 (s : \u2124) + 1 \u2228 |(r : \u2124) - 3 * (s : \u2124)| = 1)",
+      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8eea5994bfebdcca4865528bd7524af4064f9c16",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/statement/ChallengeD12.lean",
+        "sha256": "9e47ed9a4012fa8823c6c3bf4d04004aa7e5137642eaaa4a77cdff59ab1d7e77"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeD12.classification",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L32",
+        "file_sha256": "fc7ea28b3f5d934eeb4e9f5e2a17e4152a19aceff38ba4b023c7496c977a6bbf",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "1f238a5f03c50ec27c10b9b8cdc384d5468719230061edec1d9cb72c235ba23a",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem D12"
+    },
+    {
+      "id": "D12.main",
+      "kind": "published-lean-statement",
+      "declaration": "ClaudeChallengeD12.main",
+      "file": "FormalConjectures/Paper/D12.lean",
+      "line": 221,
+      "statement_lean": "theorem main (r\u2080 s\u2080 a b : \u2115) (hr : 1 \u2264 r\u2080) (hs : 1 \u2264 s\u2080) :\n    \u2203 n\u2080 P : \u2115, 0 < P \u2227 \u2200 n : \u2115, n\u2080 \u2264 n \u2192\n      (PathExists (r\u2080 + a * n) (s\u2080 + b * n) \u2194\n        PathExists (r\u2080 + a * (n + P)) (s\u2080 + b * (n + P)))",
+      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained.",
+      "body": "by sorry (intentional statement placeholder)",
+      "source": {
+        "repository": "tkmt-lab/gsw-ray-periodicity",
+        "commit": "8eea5994bfebdcca4865528bd7524af4064f9c16",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/statement/ChallengeD12.lean",
+        "sha256": "9e47ed9a4012fa8823c6c3bf4d04004aa7e5137642eaaa4a77cdff59ab1d7e77"
+      },
+      "public_proof": {
+        "kind": "lean4",
+        "declaration": "ClaudeChallengeD12.main",
+        "url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L39",
+        "file_sha256": "fc7ea28b3f5d934eeb4e9f5e2a17e4152a19aceff38ba4b023c7496c977a6bbf",
+        "executed_by_this_package": false
+      },
+      "correspondence": {
+        "type_equal": true,
+        "lean_expr_repr_sha256": "48edb1aeb0784bf5e1b541f167947a25e59376bcff3a2020500dcb5b19be1108",
+        "evidence": "checks/statement-correspondence.json"
+      },
+      "reproduce": "python3 -B tools/check.py --problem D12"
+    }
+  ]
+}

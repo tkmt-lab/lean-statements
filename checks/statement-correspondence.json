@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "kind": "public summary of recorded statement correspondence checks",
+  "problem_files": 9,
+  "theorem_type_pairs": 18,
+  "original_bodies_reconstructed_exactly": true,
+  "summaries": [
+    {
+      "result": "PASS",
+      "lean": "leanprover/lean4:v4.35.0",
+      "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "checked_date_utc": "2026-10-22",
+      "checks": [
+        {
+          "problem": "A3",
+          "declaration": "ClaudeChallenge.main",
+          "lean_expr_repr_sha256": "74fd43df5999ec5052583b46eab251c6fb24f817bf7002b51609ebdfee4d992f",
+          "type_equal": true
+        },
+        {
+          "problem": "AffineRays",
+          "declaration": "ClaudeChallenge2.main",
+          "lean_expr_repr_sha256": "efdfae0d29d5b804762eaa57531ac95635f99adfc5aee94739a4a69bf4051d0c",
+          "type_equal": true
+        },
+        {
+          "problem": "K3",
+          "declaration": "ClaudeChallengeK3.main",
+          "lean_expr_repr_sha256": "ae2509325e3a3a83f2f284a123e8ad85e316a3f28dd24f89623ff909a9a5c40a",
+          "type_equal": true
+        },
+        {
+          "problem": "C1",
+          "declaration": "ClaudeChallengeC1.classification",
+          "lean_expr_repr_sha256": "a98429f54619a0b5b753b6b5141a8642cfe70e347cd57262a7cb0c1e6d58fddd",
+          "type_equal": true
+        },
+        {
+          "problem": "C1",
+          "declaration": "ClaudeChallengeC1.main",
+          "lean_expr_repr_sha256": "312e45cf79801d2c6489c79563cc6cc71f32f0eb9580ceed00297c3deb9ad520",
+          "type_equal": true
+        },
+        {
+          "problem": "O2",
+          "declaration": "ClaudeChallengeO2.classification",
+          "lean_expr_repr_sha256": "fb7137ed5d0febcca1004187134e5be5807ce2a137e5bdac265269805271938b",
+          "type_equal": true
+        },
+        {
+          "problem": "O2",
+          "declaration": "ClaudeChallengeO2.main",
+          "lean_expr_repr_sha256": "b34cd3796fb6b9e7de907a2cad7a69a62efda2d673f27bd8fce6df821051be55",
+          "type_equal": true
+        },
+        {
+          "problem": "D14",
+          "declaration": "ClaudeChallengeD14.main",
+          "lean_expr_repr_sha256": "7f3039ef0c760cdc42dc6a22dc3a80d7e6671fe5b8aefb0582b1e18fa2217481",
+          "type_equal": true
+        },
+        {
+          "problem": "E10",
+          "declaration": "ClaudeChallengeE10.classification",
+          "lean_expr_repr_sha256": "290949d2de486313fd3f8a37419372fbcec9e0234e23defac9110788db1f6b28",
+          "type_equal": true
+        },
+        {
+          "problem": "E10",
+          "declaration": "ClaudeChallengeE10.main",
+          "lean_expr_repr_sha256": "71cd35e54012aea597a5d66d45c1b270d9bd2472805d30d256f13c9bf4b5570f",
+          "type_equal": true
+        }
+      ],
+      "parsed_solved_and_proof_links_checked": true,
+      "linked_proofs_executed": false,
+      "elapsed_seconds": 334.444,
+      "maximum_sampled_rss_kib": 2839760
+    },
+    {
+      "result": "PASS",
+      "lean": "leanprover/lean4:v4.35.0",
+      "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "checked_date_utc": "2026-10-22",
+      "checks": [
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hh_sound_square",
+          "lean_expr_repr_sha256": "656a5907b5eaf7e13fa6873ebcd176fcde9b90d765145bb5e34c74c768be37e6",
+          "type_equal": true
+        },
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hc_sound_square",
+          "lean_expr_repr_sha256": "dcb12975f92b38276c941e5a7fd28268cf5e33f623b7576fa2b7612b4e0cce03",
+          "type_equal": true
+        },
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hh_sound_hex",
+          "lean_expr_repr_sha256": "f34d288b1ef4642b68200c563dac8d6ccacc31975c503227f6a0a12020ff0a18",
+          "type_equal": true
+        },
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hc_sound_hex",
+          "lean_expr_repr_sha256": "bab6eeaa7c040095633eb4cad020bd152bf676d0855a761efe1751bc0a093347",
+          "type_equal": true
+        },
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hh_sound_tri",
+          "lean_expr_repr_sha256": "7bcc7e68a42f49e2df52e0b742d9424e1850c931e5ae915bd07289ca6dfc79e4",
+          "type_equal": true
+        },
+        {
+          "problem": "Heesch",
+          "declaration": "Heesch.hc_sound_tri",
+          "lean_expr_repr_sha256": "8b68874aea4643be875d44258f3cfb4d00501234a9a451d0bbbc66d5d2512f83",
+          "type_equal": true
+        }
+      ],
+      "parsed_solved_and_proof_links_checked": true,
+      "linked_proofs_executed": false,
+      "elapsed_seconds": 25.268,
+      "maximum_sampled_rss_kib": 1586240
+    },
+    {
+      "result": "PASS",
+      "lean": "leanprover/lean4:v4.35.0",
+      "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "checked_date_utc": "2026-10-23",
+      "checks": [
+        {
+          "problem": "D12",
+          "declaration": "ClaudeChallengeD12.classification",
+          "lean_expr_repr_sha256": "1f238a5f03c50ec27c10b9b8cdc384d5468719230061edec1d9cb72c235ba23a",
+          "type_equal": true
+        },
+        {
+          "problem": "D12",
+          "declaration": "ClaudeChallengeD12.main",
+          "lean_expr_repr_sha256": "48edb1aeb0784bf5e1b541f167947a25e59376bcff3a2020500dcb5b19be1108",
+          "type_equal": true
+        }
+      ],
+      "parsed_solved_and_proof_links_checked": true,
+      "linked_proofs_executed": false,
+      "elapsed_seconds": 27.33,
+      "maximum_sampled_rss_kib": 1547904
+    }
+  ],
+  "limits": [
+    "These records compare statement types and metadata, not the truth of theorem statements.",
+    "The linked proof closures were not executed by these checks.",
+    "Lean 4.33.1 and the full upstream linter suite were not checked."
+  ],
+  "source_files": {
+    "A3": {
+      "source_sha256": "a8743de53d570cb0b1a3e4c92ea4d3456b509f6e7caadd61774e16fd41c0f1fc",
+      "normalized_sha256": "4131c490dcf363aeba83af516824ebe85d23f8031a9b0e68ea712d2979f1c759"
+    },
+    "AffineRays": {
+      "source_sha256": "d2800a5c4560ce94b5f94faada54003063bcb3e38b599d32e035d23ab264a66d",
+      "normalized_sha256": "b8288527182d5ecbe3de12ceb8398bc961f1d6267a45b52fe98629178c370897"
+    },
+    "K3": {
+      "source_sha256": "80fcf97e49d64935643d9d6a70b1d82b7eed9668559eed0ad9b0b529eb8055d8",
+      "normalized_sha256": "0de9a736800b27c81a2edb1ae680e9f94b5f8d76fde09d6618ddbee2db5cbf2d"
+    },
+    "C1": {
+      "source_sha256": "3130ba4ea41f9bba0e1c213d47c089497b936d0eba22ae15a1c445bfc109e956",
+      "normalized_sha256": "bffccfa6b87ccf1c99501c1f91a4e283487d533c9b66254c170e7e73fa803077"
+    },
+    "O2": {
+      "source_sha256": "b85926f8d62ee63d539f0e55f0ee5f74179eeb223a23f596adcf8bce6f0764e1",
+      "normalized_sha256": "26922525051e93bea02ab093243aa4ee7e4a27472f104cc59a12042283249c0a"
+    },
+    "D14": {
+      "source_sha256": "d7ee8c0b82dfee819cdbd1f539236df457c4db0a8101fcbc2690515b7714c55a",
+      "normalized_sha256": "81272f29229d0322f5625bb4f2458bcce8cf8d2fca4ca7dca44346f21d1e856e"
+    },
+    "E10": {
+      "source_sha256": "d057a0882ce28b4a9321674bdc21bf56ec767a1fd07ceff01551602d231b25d0",
+      "normalized_sha256": "74d5d13b38a40e1643f33ccd94f0ccb0d3c08ba38ef7c73346eeb971a1fc12fb"
+    },
+    "Heesch": {
+      "source_sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73",
+      "normalized_sha256": "a295542046511a0f65295015c69906c8269b056f192bd428e4d22eb9f9ba0973"
+    },
+    "D12": {
+      "source_sha256": "9e47ed9a4012fa8823c6c3bf4d04004aa7e5137642eaaa4a77cdff59ab1d7e77",
+      "normalized_sha256": "bed57f1beea095f4ef910e6d67a08d32510c1f39ddc16ee05c6bc69fafa52155"
+    }
+  }
+}

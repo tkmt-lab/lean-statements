@@ -1,0 +1,27 @@
+Lean statements from published papers
+Copyright 2026 Tatsuhiko Takimoto.
+Licensed under the Apache License, Version 2.0.
+
+The nine problem files preserve the published mathematical definitions and theorem
+statements from tkmt-lab/a3-gsw-classification, tkmt-lab/gsw-ray-periodicity and
+tkmt-lab/heesch-certificates. Their Lean code is Apache-2.0. Source commits and
+file hashes are recorded in manifest.json; license records are in
+checks/license-sources.json. The problem copies add an Apache header, public module
+imports, a references section and solved/proof-link attributes. The mathematical
+body is otherwise unchanged; the transformation can be reversed byte-for-byte.
+
+This package includes two UNMODIFIED files from google-deepmind/formal-conjectures
+at commit 9833012f66a47cdd3a6f3eca9cb4b84e0f18a003:
+  support/FormalConjecturesUtil/Attributes/AMS.lean
+  support/FormalConjecturesUtil/Attributes/Basic.lean
+Copyright 2025 The Formal Conjectures Authors.
+Licensed under Apache-2.0; their original copyright and license headers are retained.
+Upstream license: https://github.com/google-deepmind/formal-conjectures/blob/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003/LICENSE
+
+support/FormalConjecturesUtil.lean is a local metadata-only facade, not the upstream
+root utility or its full linter suite. This project is not an official part of
+formal-conjectures and has not been contributed to it.
+
+The linked papers, data and dependencies retain their own licenses. In particular,
+Heesch article/text/data licensing is distinct from its Apache-2.0 Lean code. No
+article PDF, external dataset or linked proof closure is bundled here.

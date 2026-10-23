@@ -1,0 +1,67 @@
+name = "lean_statements"
+version = "1.0.0"
+defaultTargets = ["D12Statement"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+[[lean_lib]]
+name = "FormalConjecturesUtil"
+srcDir = "support"
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "A3Statement"
+roots = ["FormalConjectures.Paper.A3"]
+needs = ["FormalConjecturesUtil"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "AffineRaysStatement"
+roots = ["FormalConjectures.Paper.AffineRays"]
+needs = ["A3Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "K3Statement"
+roots = ["FormalConjectures.Paper.K3"]
+needs = ["AffineRaysStatement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "C1Statement"
+roots = ["FormalConjectures.Paper.C1"]
+needs = ["K3Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "O2Statement"
+roots = ["FormalConjectures.Paper.O2"]
+needs = ["C1Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "D14Statement"
+roots = ["FormalConjectures.Paper.D14"]
+needs = ["O2Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "E10Statement"
+roots = ["FormalConjectures.Paper.E10"]
+needs = ["D14Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "HeeschStatement"
+roots = ["FormalConjectures.Paper.Heesch"]
+needs = ["E10Statement"]
+moreLeanArgs = ["-j1", "-M3072"]
+
+[[lean_lib]]
+name = "D12Statement"
+roots = ["FormalConjectures.Paper.D12"]
+needs = ["HeeschStatement"]
+moreLeanArgs = ["-j1", "-M3072"]

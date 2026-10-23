@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "source_policy": "Fixed public source commits; no unpublished statement or proof is included.",
+  "license": "Apache-2.0",
+  "statement_only": true,
+  "linked_proofs_rechecked": false,
+  "upstream_format": {
+    "repository": "google-deepmind/formal-conjectures",
+    "commit": "9833012f66a47cdd3a6f3eca9cb4b84e0f18a003",
+    "lean": "4.33.1",
+    "examples": [
+      "FormalConjectures/ErdosProblems/341.lean",
+      "FormalConjectures/Arxiv/1207.5099/SubprimeFibonacci.lean",
+      "FormalConjectures/OpenQuantumProblems/35.lean"
+    ]
+  },
+  "local_toolchain": {
+    "lean": "leanprover/lean4:v4.35.0",
+    "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+    "upstream_4_33_1_checked": false
+  },
+  "projection_marker": "-- BEGIN ORIGINAL CHALLENGE BODY (metadata attributes are the only insertions below)\n",
+  "normalization": [
+    "Prepend Apache header, module, upstream-style references, and exposed public section.",
+    "Retain each original import, changing import to public import; add the metadata-only facade.",
+    "Retain the original challenge body verbatim except for metadata attributes before its theorem declarations.",
+    "Do not rename namespaces, change definitions, theorem types, hypotheses or sorry bodies.",
+    "Keep each problem independent: common original namespaces repeat across files."
+  ],
+  "support": [
+    {
+      "file": "support/FormalConjecturesUtil/Attributes/AMS.lean",
+      "upstream_file": "FormalConjecturesUtil/Attributes/AMS.lean",
+      "upstream_commit": "9833012f66a47cdd3a6f3eca9cb4b84e0f18a003",
+      "upstream_url": "https://github.com/google-deepmind/formal-conjectures/blob/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003/FormalConjecturesUtil/Attributes/AMS.lean",
+      "upstream_sha256": "e5a6b4b0cd42e1ad11e84b75bd89f78a9797a98e5b23d8b956f13190b9078d96",
+      "sha256": "e5a6b4b0cd42e1ad11e84b75bd89f78a9797a98e5b23d8b956f13190b9078d96",
+      "modified": false
+    },
+    {
+      "file": "support/FormalConjecturesUtil/Attributes/Basic.lean",
+      "upstream_file": "FormalConjecturesUtil/Attributes/Basic.lean",
+      "upstream_commit": "9833012f66a47cdd3a6f3eca9cb4b84e0f18a003",
+      "upstream_url": "https://github.com/google-deepmind/formal-conjectures/blob/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003/FormalConjecturesUtil/Attributes/Basic.lean",
+      "upstream_sha256": "0ecdf87713c3f9141b60572eb62b9a9a28ccbc7a56739c73a1e3116a119d92d0",
+      "sha256": "0ecdf87713c3f9141b60572eb62b9a9a28ccbc7a56739c73a1e3116a119d92d0",
+      "modified": false
+    },
+    {
+      "file": "support/FormalConjecturesUtil.lean",
+      "origin": "local",
+      "sha256": "809647e2daccc3ce87d0ee806c758fa50506231aa9e1f9cb4ca964370d7e7383",
+      "modified": false,
+      "description": "New metadata-only facade, not the upstream root utility."
+    }
+  ],
+  "problems": [
+    {
+      "id": "A3",
+      "file": "FormalConjectures/Paper/A3.lean",
+      "source_repository": "tkmt-lab/a3-gsw-classification",
+      "source_commit": "58124b20fa4a3b19aaa62e734c2036210f7bdcf8",
+      "source_ref": "origin/main",
+      "source_file": "packet/formal/Formal/ComparatorChallengeMain.lean",
+      "source_url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/packet/formal/Formal/ComparatorChallengeMain.lean",
+      "source_sha256": "a8743de53d570cb0b1a3e4c92ea4d3456b509f6e7caadd61774e16fd41c0f1fc",
+      "source_bytes": 6385,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Int.GCD\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/packet/formal/Formal/ComparatorSolutionMain.lean#L7\"]\n"
+      ],
+      "normalized_sha256": "4131c490dcf363aeba83af516824ebe85d23f8031a9b0e68ea712d2979f1c759",
+      "scope": "Full A3 classification for 0 < l < k; literal Definition 1(a), not a classification of all fullerenes.",
+      "paper_doi": "10.5281/zenodo.23515012",
+      "paper_version": "9.0",
+      "declarations": [
+        {
+          "name": "ClaudeChallenge.main",
+          "source_line": 129,
+          "proof_declaration": "ClaudeChallenge.main",
+          "proof_file": "packet/formal/Formal/ComparatorSolutionMain.lean",
+          "proof_file_sha256": "0e9ff49c891f172001e092c93dc172e5a2f814455a28718727b484409df64851",
+          "proof_line": 7,
+          "formal_proof_url": "https://github.com/tkmt-lab/a3-gsw-classification/blob/58124b20fa4a3b19aaa62e734c2036210f7bdcf8/packet/formal/Formal/ComparatorSolutionMain.lean#L7",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 175
+        }
+      ],
+      "theorem_count": 1
+    },
+    {
+      "id": "AffineRays",
+      "file": "FormalConjectures/Paper/AffineRays.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/Challenge2.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/Challenge2.lean",
+      "source_sha256": "d2800a5c4560ce94b5f94faada54003063bcb3e38b599d32e035d23ab264a66d",
+      "source_bytes": 8364,
+      "original_import_prefix": "import Mathlib\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude3ComparatorSolution.lean#L10\"]\n"
+      ],
+      "normalized_sha256": "b8288527182d5ecbe3de12ceb8398bc961f1d6267a45b52fe98629178c370897",
+      "scope": "Specification-level eventual periodicity under Valid and TrianglesInCharts. The bridge from the paper geometric hypotheses is prose, not a Lean theorem.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallenge2.main",
+          "source_line": 169,
+          "proof_declaration": "ClaudeChallenge2.main",
+          "proof_file": "packet/formal/Formal/Claude3ComparatorSolution.lean",
+          "proof_file_sha256": "4061d1ed401eb044faf68d8f881783935f540823998d8711ed2ac88f6ed984f9",
+          "proof_line": 10,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude3ComparatorSolution.lean#L10",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 215
+        }
+      ],
+      "theorem_count": 1
+    },
+    {
+      "id": "K3",
+      "file": "FormalConjectures/Paper/K3.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/ChallengeK3.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeK3.lean",
+      "source_sha256": "80fcf97e49d64935643d9d6a70b1d82b7eed9668559eed0ad9b0b529eb8055d8",
+      "source_bytes": 7951,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4K3ComparatorSolution.lean#L23\"]\n"
+      ],
+      "normalized_sha256": "0de9a736800b27c81a2edb1ae680e9f94b5f8d76fde09d6618ddbee2db5cbf2d",
+      "scope": "Every positive-domain affine ray, including boundary rays with one parameter equal to 1. No new K3 classification declaration is added.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeK3.main",
+          "source_line": 166,
+          "proof_declaration": "ClaudeChallengeK3.main",
+          "proof_file": "packet/formal/Formal/Claude4K3ComparatorSolution.lean",
+          "proof_file_sha256": "18271691603a3eee39a92aa0a2ceabf300058b527397c705b54257228bd8e689",
+          "proof_line": 23,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4K3ComparatorSolution.lean#L23",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 212
+        }
+      ],
+      "theorem_count": 1
+    },
+    {
+      "id": "C1",
+      "file": "FormalConjectures/Paper/C1.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/ChallengeC1.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeC1.lean",
+      "source_sha256": "3130ba4ea41f9bba0e1c213d47c089497b936d0eba22ae15a1c445bfc109e956",
+      "source_bytes": 7169,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L24\"]\n",
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L29\"]\n"
+      ],
+      "normalized_sha256": "bffccfa6b87ccf1c99501c1f91a4e283487d533c9b66254c170e7e73fa803077",
+      "scope": "Classification for r,s >= 1 and positive-domain rays; the IPR clause is outside this statement.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeC1.classification",
+          "source_line": 152,
+          "proof_declaration": "ClaudeChallengeC1.classification",
+          "proof_file": "packet/formal/Formal/Claude4C1ComparatorSolution.lean",
+          "proof_file_sha256": "581e36bb721f298fb6c3a7c297c3337595353bf026be740ac6bc3f79d4c3a05f",
+          "proof_line": 24,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L24",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 198
+        },
+        {
+          "name": "ClaudeChallengeC1.main",
+          "source_line": 157,
+          "proof_declaration": "ClaudeChallengeC1.main",
+          "proof_file": "packet/formal/Formal/Claude4C1ComparatorSolution.lean",
+          "proof_file_sha256": "581e36bb721f298fb6c3a7c297c3337595353bf026be740ac6bc3f79d4c3a05f",
+          "proof_line": 29,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude4C1ComparatorSolution.lean#L29",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 205
+        }
+      ],
+      "theorem_count": 2
+    },
+    {
+      "id": "O2",
+      "file": "FormalConjectures/Paper/O2.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/ChallengeO2.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeO2.lean",
+      "source_sha256": "b85926f8d62ee63d539f0e55f0ee5f74179eeb223a23f596adcf8bce6f0764e1",
+      "source_bytes": 8007,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L27\"]\n",
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L32\"]\n"
+      ],
+      "normalized_sha256": "26922525051e93bea02ab093243aa4ee7e4a27472f104cc59a12042283249c0a",
+      "scope": "Absence for t,d >= 2; periodicity for rays starting in t,d >= 1. No extra existence cases are asserted.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeO2.classification",
+          "source_line": 164,
+          "proof_declaration": "ClaudeChallengeO2.classification",
+          "proof_file": "packet/formal/Formal/Claude5O2ComparatorSolution.lean",
+          "proof_file_sha256": "2303378bac2bb6953cad83fdec59d24a8569d96199ac6c230eee691d59aa9818",
+          "proof_line": 27,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L27",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 210
+        },
+        {
+          "name": "ClaudeChallengeO2.main",
+          "source_line": 169,
+          "proof_declaration": "ClaudeChallengeO2.main",
+          "proof_file": "packet/formal/Formal/Claude5O2ComparatorSolution.lean",
+          "proof_file_sha256": "2303378bac2bb6953cad83fdec59d24a8569d96199ac6c230eee691d59aa9818",
+          "proof_line": 32,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5O2ComparatorSolution.lean#L32",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 217
+        }
+      ],
+      "theorem_count": 2
+    },
+    {
+      "id": "D14",
+      "file": "FormalConjectures/Paper/D14.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/ChallengeD14.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeD14.lean",
+      "source_sha256": "d7ee8c0b82dfee819cdbd1f539236df457c4db0a8101fcbc2690515b7714c55a",
+      "source_bytes": 7614,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5D14ComparatorSolution.lean#L29\"]\n"
+      ],
+      "normalized_sha256": "81272f29229d0322f5625bb4f2458bcce8cf8d2fca4ca7dca44346f21d1e856e",
+      "scope": "Positive-domain ray periodicity only. The supporting no-path lemma is not added as a new challenge statement.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeD14.main",
+          "source_line": 164,
+          "proof_declaration": "ClaudeChallengeD14.main",
+          "proof_file": "packet/formal/Formal/Claude5D14ComparatorSolution.lean",
+          "proof_file_sha256": "dd0122dec1a182b525fa655826470b46b23f06fde7a621928c0e706f23f69c83",
+          "proof_line": 29,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5D14ComparatorSolution.lean#L29",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 210
+        }
+      ],
+      "theorem_count": 1
+    },
+    {
+      "id": "E10",
+      "file": "FormalConjectures/Paper/E10.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8a53918db58fa6949ce0f868aa8dcb89be3345d5",
+      "source_ref": "origin/main",
+      "source_file": "statement/ChallengeE10.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/statement/ChallengeE10.lean",
+      "source_sha256": "d057a0882ce28b4a9321674bdc21bf56ec767a1fd07ceff01551602d231b25d0",
+      "source_bytes": 10452,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\nimport Mathlib.Data.Int.ModEq\n",
+      "inserted_attributes": [
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L31\"]\n",
+        "@[category research solved, AMS 5 37 92, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L40\"]\n"
+      ],
+      "normalized_sha256": "74d5d13b38a40e1643f33ccd94f0ccb0d3c08ba38ef7c73346eeb971a1fc12fb",
+      "scope": "Classification for p,s >= 1 and r >= 2; positive-domain ray periodicity includes r = 1. No r = 1 closed classification is asserted.",
+      "paper_doi": "10.5281/zenodo.23540600",
+      "paper_version": "6.2",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeE10.classification",
+          "source_line": 208,
+          "proof_declaration": "ClaudeChallengeE10.classification",
+          "proof_file": "packet/formal/Formal/Claude5E10ComparatorSolution.lean",
+          "proof_file_sha256": "a1fef612cbb2d1e1b06f1102e09b46dc8dfa112c6e78cd0031a3af202907bc2d",
+          "proof_line": 31,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L31",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 254
+        },
+        {
+          "name": "ClaudeChallengeE10.main",
+          "source_line": 216,
+          "proof_declaration": "ClaudeChallengeE10.main",
+          "proof_file": "packet/formal/Formal/Claude5E10ComparatorSolution.lean",
+          "proof_file_sha256": "a1fef612cbb2d1e1b06f1102e09b46dc8dfa112c6e78cd0031a3af202907bc2d",
+          "proof_line": 40,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8a53918db58fa6949ce0f868aa8dcb89be3345d5/packet/formal/Formal/Claude5E10ComparatorSolution.lean#L40",
+          "category": "research solved",
+          "AMS": [
+            5,
+            37,
+            92
+          ],
+          "normalized_line": 264
+        }
+      ],
+      "theorem_count": 2
+    },
+    {
+      "id": "Heesch",
+      "file": "FormalConjectures/Paper/Heesch.lean",
+      "source_repository": "tkmt-lab/heesch-certificates",
+      "source_commit": "271bc8ce223a1fd641494352eb31f350e3d8bf37",
+      "source_ref": "refs/tags/v1.0.0 (also origin/main when checked)",
+      "source_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Challenge.lean",
+      "source_file": "formal/Heesch/Challenge.lean",
+      "source_sha256": "3a637f3260f784d00f7a332eb10351563bd4605b2e03458836b8a67781780d73",
+      "source_bytes": 28045,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected\nimport Mathlib.Data.Set.Finite.Basic\n",
+      "inserted_attributes": [
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L21\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L29\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L37\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L45\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L53\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L61\"]\n"
+      ],
+      "normalized_sha256": "a295542046511a0f65295015c69906c8269b056f192bd428e4d22eb9f9ba0973",
+      "scope": "Six conditional CNF soundness statements: Hh/Hc on square/hexagon/triangle grids; arbitrary counter-input permutation, K >= 1, valid hole blocks, and unsatisfiability hypotheses retained. No numerical Heesch values or certificate executions.",
+      "paper_doi": "10.5281/zenodo.23572883",
+      "paper_version": "2.1",
+      "declarations": [
+        {
+          "name": "Heesch.hh_sound_square",
+          "source_line": 523,
+          "proof_declaration": "Heesch.hh_sound_square",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 21,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L21",
+          "category": "research solved",
+          "normalized_line": 568
+        },
+        {
+          "name": "Heesch.hc_sound_square",
+          "source_line": 531,
+          "proof_declaration": "Heesch.hc_sound_square",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 29,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L29",
+          "category": "research solved",
+          "normalized_line": 578
+        },
+        {
+          "name": "Heesch.hh_sound_hex",
+          "source_line": 539,
+          "proof_declaration": "Heesch.hh_sound_hex",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 37,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L37",
+          "category": "research solved",
+          "normalized_line": 588
+        },
+        {
+          "name": "Heesch.hc_sound_hex",
+          "source_line": 547,
+          "proof_declaration": "Heesch.hc_sound_hex",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 45,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L45",
+          "category": "research solved",
+          "normalized_line": 598
+        },
+        {
+          "name": "Heesch.hh_sound_tri",
+          "source_line": 555,
+          "proof_declaration": "Heesch.hh_sound_tri",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 53,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L53",
+          "category": "research solved",
+          "normalized_line": 608
+        },
+        {
+          "name": "Heesch.hc_sound_tri",
+          "source_line": 563,
+          "proof_declaration": "Heesch.hc_sound_tri",
+          "proof_file": "formal/Heesch/Solution.lean",
+          "proof_file_sha256": "6815e14f3ab821a4745c36ef9fe3957735382217610ed69bd9b2eb394e01dc17",
+          "proof_line": 61,
+          "formal_proof_url": "https://github.com/tkmt-lab/heesch-certificates/blob/271bc8ce223a1fd641494352eb31f350e3d8bf37/formal/Heesch/Solution.lean#L61",
+          "category": "research solved",
+          "normalized_line": 618
+        }
+      ],
+      "theorem_count": 6,
+      "release_version": "1.0.0"
+    },
+    {
+      "id": "D12",
+      "file": "FormalConjectures/Paper/D12.lean",
+      "source_repository": "tkmt-lab/gsw-ray-periodicity",
+      "source_commit": "8eea5994bfebdcca4865528bd7524af4064f9c16",
+      "source_ref": "refs/tags/v1.10.0 (also origin/main when checked)",
+      "source_file": "statement/ChallengeD12.lean",
+      "source_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/statement/ChallengeD12.lean",
+      "source_sha256": "9e47ed9a4012fa8823c6c3bf4d04004aa7e5137642eaaa4a77cdff59ab1d7e77",
+      "source_bytes": 8016,
+      "original_import_prefix": "import Mathlib.Combinatorics.SimpleGraph.Finite\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Algebra.Ring.Parity\nimport Mathlib.Data.Set.Card\n",
+      "inserted_attributes": [
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L32\"]\n",
+        "@[category research solved, formal_proof using lean4 at\n  \"https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L39\"]\n"
+      ],
+      "normalized_sha256": "bed57f1beea095f4ef910e6d67a08d32510c1f39ddc16ee05c6bc69fafa52155",
+      "scope": "Closed classification for r,s >= 1: integer r divides s-1 or s+1, or abs(r-3*s)=1; literal-path eventual periodicity for all natural positive starts and nonnegative slopes, including parameter-one boundaries and constant rays. Explicit quotient-model definitions retained.",
+      "paper_doi": "10.5281/zenodo.23491204",
+      "paper_doi_scope": "all versions; not a release-specific DOI",
+      "paper_version": "6.3",
+      "release_version": "1.10.0",
+      "declarations": [
+        {
+          "name": "ClaudeChallengeD12.classification",
+          "source_line": 165,
+          "proof_declaration": "ClaudeChallengeD12.classification",
+          "proof_file": "packet/formal/Formal/Claude7D12ComparatorSolution.lean",
+          "proof_file_sha256": "fc7ea28b3f5d934eeb4e9f5e2a17e4152a19aceff38ba4b023c7496c977a6bbf",
+          "proof_line": 32,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L32",
+          "category": "research solved",
+          "normalized_line": 212
+        },
+        {
+          "name": "ClaudeChallengeD12.main",
+          "source_line": 172,
+          "proof_declaration": "ClaudeChallengeD12.main",
+          "proof_file": "packet/formal/Formal/Claude7D12ComparatorSolution.lean",
+          "proof_file_sha256": "fc7ea28b3f5d934eeb4e9f5e2a17e4152a19aceff38ba4b023c7496c977a6bbf",
+          "proof_line": 39,
+          "formal_proof_url": "https://github.com/tkmt-lab/gsw-ray-periodicity/blob/8eea5994bfebdcca4865528bd7524af4064f9c16/packet/formal/Formal/Claude7D12ComparatorSolution.lean#L39",
+          "category": "research solved",
+          "normalized_line": 221
+        }
+      ],
+      "theorem_count": 2,
+      "origin_main_verified_date": "2026-10-23"
+    }
+  ],
+  "omissions": [
+    "Published proof closures are linked, not bundled or executed by this package.",
+    "Unpublished statements and non-Lean results are not included."
+  ],
+  "scope_warning": "The challenge files intentionally repeat original global namespaces and must be checked/imported independently unless the consumer deliberately refactors the shared definitions.",
+  "origin_main_verified_date": "2026-10-22",
+  "package_files": {
+    "LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "NOTICE": "1e22edbedcd824d86adbccfac8eaf8f57694bb909cce210b9fb13d7382b90abc",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lakefile.toml": "89160efbb777b572123126355f215f535b2c4f31100ba59c7530d29841bd7cac",
+    "lake-manifest.json": "237c60e63284f1d14fb45e7e6a3546675dcc3d59ec33661dad78b1c2fe8d3703"
+  },
+  "package": "lean-statements",
+  "version": "1.0.0",
+  "verification_summary": "checks/statement-correspondence.json"
+}

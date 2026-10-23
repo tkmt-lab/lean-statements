@@ -1,0 +1,36 @@
+{
+  "cff-version": "1.2.0",
+  "message": "Cite this software collection by version. Cite the corresponding source paper for a mathematical result.",
+  "title": "Lean statements from published papers",
+  "type": "software",
+  "version": "1.0.0",
+  "date-released": "2026-10-23",
+  "authors": [
+    {
+      "family-names": "Takimoto",
+      "given-names": "Tatsuhiko",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "license": "Apache-2.0",
+  "repository-code": "https://github.com/tkmt-lab/lean-statements",
+  "keywords": [
+    "Lean",
+    "formal statements",
+    "mathematical software",
+    "generalized Stone-Wales paths",
+    "Heesch certificates"
+  ],
+  "references": [
+    {
+      "type": "software",
+      "title": "formal-conjectures",
+      "authors": [
+        {
+          "name": "The Formal Conjectures Authors"
+        }
+      ],
+      "url": "https://github.com/google-deepmind/formal-conjectures/tree/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003"
+    }
+  ]
+}

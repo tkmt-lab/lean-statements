@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-23",
+  "files": [
+    {
+      "file": "support/FormalConjecturesUtil/Attributes/AMS.lean",
+      "url": "https://raw.githubusercontent.com/google-deepmind/formal-conjectures/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003/FormalConjecturesUtil/Attributes/AMS.lean",
+      "sha256": "e5a6b4b0cd42e1ad11e84b75bd89f78a9797a98e5b23d8b956f13190b9078d96",
+      "unchanged": true
+    },
+    {
+      "file": "support/FormalConjecturesUtil/Attributes/Basic.lean",
+      "url": "https://raw.githubusercontent.com/google-deepmind/formal-conjectures/9833012f66a47cdd3a6f3eca9cb4b84e0f18a003/FormalConjecturesUtil/Attributes/Basic.lean",
+      "sha256": "0ecdf87713c3f9141b60572eb62b9a9a28ccbc7a56739c73a1e3116a119d92d0",
+      "unchanged": true
+    }
+  ]
+}
