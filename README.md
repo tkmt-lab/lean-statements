@@ -105,14 +105,17 @@ Omit `--problem D12` to check all nine files. Each original and normalized file 
 elaborated in its own environment. The checker compares the serialized theorem-type
 expressions. Its per-file limit is ten minutes and 3 GiB sampled RSS, with one Lean
 process at a time. The default Lean memory threshold is also 3072 MiB. A full run
-on macOS required higher limits for AffineRays; with enough free memory, use:
+requires higher limits for AffineRays. Prepare the setup files once, then run the
+check with enough free memory:
 
 ```sh
-python3 -B tools/check.py --lean-memory-mib 4096 --rss-limit-mib 4608
+python3 -B tools/prepare_setup.py --evidence .build/setup-prep
+python3 -B tools/check.py --lean-memory-mib 11264 --rss-limit-mib 12288
 ```
 
-These options permit up to 4 GiB for Lean's memory threshold and 4.5 GiB sampled
-RSS. The checker rejects larger values and records the chosen limits in its receipt.
+These options permit up to 11 GiB for Lean's memory threshold and 12 GiB sampled
+RSS; on a Linux test machine the largest pair peaked near 7 GiB. The checker rejects
+larger values and records the chosen limits in its receipt.
 Detailed generated logs stay in ignored `.build/` folders.
 The [public summary](checks/statement-correspondence.json) records the earlier
 checks of all 18 type pairs.

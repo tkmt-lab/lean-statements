@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Check reversible source correspondence, then elaborate one Lean process at a time.
 
-Uses the local dependency cache or an already-built matching Mathlib project. It never invokes Lake,
-downloads dependencies, runs the linked proofs, or terminates another task's process.
+Uses Lake setup-file with --no-build in an isolated prepared project. It does not download
+dependencies, run linked proofs, or terminate another task's process.
 """
 from __future__ import annotations
 
@@ -57,9 +57,19 @@ def read_only_correspondence(manifest: dict) -> dict[str, bytes]:
 
 def lean_pids() -> list[int]:
     rows = subprocess.check_output(["ps", "-axo", "pid=,comm="], text=True)
-    return [int(row.split(None, 1)[0]) for row in rows.splitlines()
-            if len(row.split(None, 1)) == 2
-            and Path(row.split(None, 1)[1]).name == "lean"]
+    result = []
+    for row in rows.splitlines():
+        fields = row.split(None, 1)
+        if len(fields) != 2 or Path(fields[1]).name != "lean":
+            continue
+        pid = int(fields[0])
+        if os.uname().sysname == "Linux":
+            try:
+                state = next(x.split()[1] for x in Path(f"/proc/{pid}/status").read_text().splitlines() if x.startswith("State:"))
+                if state in {"Z", "X", "x"}: continue
+            except (FileNotFoundError, ProcessLookupError): continue
+        result.append(pid)
+    return result
 
 
 def free_percent() -> int:
@@ -102,18 +112,19 @@ def inspect_commands(entry: dict, metadata: bool) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--static-only", action="store_true")
+    parser.add_argument("--mode", choices=["both", "original", "normalized"], default="both")
     parser.add_argument("--problem", action="append", help="Elaborate only these manifest IDs; byte-check all files")
     parser.add_argument("--mathlib-project", type=Path, default=ROOT)
     parser.add_argument("--evidence", type=Path, default=ROOT / ".build" / "check")
     parser.add_argument("--rss-limit-mib", type=int, default=3072,
-                        help="sampled process RSS limit (1024..4608 MiB; default 3072)")
+                        help="sampled process RSS limit (1024..12288 MiB; default 3072)")
     parser.add_argument("--lean-memory-mib", type=int, default=3072,
-                        help="Lean's -M memory threshold (1024..4096 MiB; default 3072)")
+                        help="Lean's -M memory threshold (1024..11264 MiB; default 3072)")
     args = parser.parse_args()
-    if not 1024 <= args.rss_limit_mib <= 4608:
-        parser.error("--rss-limit-mib must be between 1024 and 4608")
-    if not 1024 <= args.lean_memory_mib <= 4096:
-        parser.error("--lean-memory-mib must be between 1024 and 4096")
+    if not 1024 <= args.rss_limit_mib <= 12288:
+        parser.error("--rss-limit-mib must be between 1024 and 12288")
+    if not 1024 <= args.lean_memory_mib <= 11264:
+        parser.error("--lean-memory-mib must be between 1024 and 11264")
     if args.lean_memory_mib > args.rss_limit_mib:
         parser.error("--lean-memory-mib must not exceed --rss-limit-mib")
     manifest = json.loads((ROOT / "manifest.json").read_text())
@@ -134,6 +145,11 @@ def main() -> None:
     assert subprocess.check_output(["git", "-C", str(cached), "rev-parse", "HEAD"],
                                    text=True).strip() == expected["mathlib_commit"]
     assert (cached / ".lake/build/lib/lean/Mathlib.olean").is_file()
+    for package in packages:
+        local_pkg = (ROOT / ".lake/packages" / package["name"]).resolve()
+        requested_pkg = (project / ".lake/packages" / package["name"]).resolve()
+        if local_pkg != requested_pkg:
+            raise RuntimeError("Lake setup and --mathlib-project must use the same dependency directories")
     evidence = args.evidence.resolve()
     evidence.mkdir(parents=True, exist_ok=True)
     work = evidence / "raw"
@@ -156,6 +172,53 @@ def main() -> None:
     def persist() -> None:
         (evidence / "typecheck.json").write_text(json.dumps(report, indent=2) + "\n")
 
+    def setup_for(label: str, source: Path) -> Path:
+        before = sha(source.read_bytes())
+        expected_module = bool(re.search(r"(?m)^module\s*$", source.read_text()))
+        path = work / (label + ".setup.json")
+        log = work / (label + ".setup.log")
+        command = ["lake", "--no-build", "setup-file", str(source.resolve())]
+        record = {"label": label, "command": command, "source_sha256": before,
+                  "expected_is_module": expected_module, "peak_rss_kib": 0}
+        report.setdefault("setup_runs", []).append(record)
+        start = time.monotonic()
+        with path.open("wb") as out, log.open("wb") as err:
+            proc = subprocess.Popen(command, cwd=ROOT, env=env, stdout=out, stderr=err,
+                                    start_new_session=True)
+            try:
+                while proc.poll() is None:
+                    rss = subprocess.run(["ps", "-o", "rss=", "-p", str(proc.pid)],
+                                         capture_output=True, text=True).stdout.strip()
+                    record["peak_rss_kib"] = max(record["peak_rss_kib"], int(rss or 0))
+                    if record["peak_rss_kib"] > args.rss_limit_mib * 1024 or time.monotonic() - start > 600:
+                        os.killpg(proc.pid, signal.SIGTERM)
+                        try: proc.wait(timeout=3)
+                        except subprocess.TimeoutExpired: os.killpg(proc.pid, signal.SIGKILL)
+                        raise RuntimeError("setup-file exceeded RSS or time limit")
+                    if lean_pids():
+                        os.killpg(proc.pid, signal.SIGTERM)
+                        raise RuntimeError("Lean process appeared during --no-build setup")
+                    time.sleep(.25)
+            except BaseException:
+                if proc.poll() is None:
+                    os.killpg(proc.pid, signal.SIGTERM)
+                    proc.wait(timeout=5)
+                raise
+            record["exit_code"] = proc.wait()
+        record["seconds"] = round(time.monotonic() - start, 3)
+        record["stderr_sha256"] = sha(log.read_bytes())
+        if record["exit_code"]: raise RuntimeError(f"Lake setup failed; see {log}")
+        data = path.read_bytes()
+        setup = json.loads(data)
+        assert sha(source.read_bytes()) == before, "input changed during setup"
+        assert setup["isModule"] == expected_module, "setup changed module header"
+        assert setup.get("imports") is None, "setup must not override file imports"
+        assert setup.get("importArts"), "missing dependency artifacts"
+        record.update(setup_sha256=sha(data), setup_bytes=len(data),
+                      is_module=setup["isModule"], import_artifact_count=len(setup["importArts"]))
+        persist()
+        return path
+
     def run(label: str, source: Path, root: Path, output: Path | None = None) -> str:
         foreign = lean_pids()
         if foreign:
@@ -167,6 +230,9 @@ def main() -> None:
         if output is not None:
             output.parent.mkdir(parents=True, exist_ok=True)
             command += ["-o", str(output)]
+        if output is None:
+            setup = setup_for(label, source)
+            command += ["--setup", str(setup)]
         command += [str(source)]
         log = work / (label + ".log")
         record = {"label": label, "command": command, "free_percent_before": free,
@@ -225,7 +291,7 @@ def main() -> None:
             ROOT / "support", build / (module + ".olean"))
     for entry in selected:
         captured = {}
-        for mode in ["original", "normalized"]:
+        for mode in (["original", "normalized"] if args.mode == "both" else [args.mode]):
             source = originals[entry["id"]].decode() if mode == "original" else (ROOT / entry["file"]).read_text()
             source += inspect_commands(entry, mode == "normalized")
             temporary = work / (entry["id"] + "-" + mode + ".lean")
@@ -236,18 +302,19 @@ def main() -> None:
             captured[mode] = types
             if mode == "normalized":
                 assert "STATEMENT_METADATA_OK" in text
-        for name, original_type in captured["original"].items():
+        for name, original_type in captured.get("original", {}).items() if args.mode == "both" else []:
             assert original_type == captured["normalized"][name], (entry["id"], name)
             report["comparisons"].append({"problem": entry["id"], "declaration": name,
                                           "lean_expr_repr_sha256": sha(original_type.encode()),
                                           "type_equal": True})
-        print("PASS elaborated types and parsed attributes: " + entry["id"], flush=True)
+        print("PASS elaboration and applicable checks: " + entry["id"] + " " + args.mode, flush=True)
         persist()
-    report["result"] = "PASS"
+    report["result"] = "PASS" if args.mode == "both" else "PARTIAL"
     persist()
+    report["selected_mode"] = args.mode
     report["selected_problem_ids"] = [p["id"] for p in selected]
     persist()
-    print(f"PASS: {len(selected)} independent problem files; "
+    print(f"{report['result']}: {len(selected)} problem files; mode={args.mode}; "
           f"{len(report['comparisons'])} original/normalized type pairs", flush=True)
 
 
