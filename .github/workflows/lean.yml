@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -19,7 +19,8 @@ jobs:
           python3 -B tools/check.py --static-only
           python3 -B tools/check_claims.py
       - name: Restore Lean and dependency cache
-        uses: actions/cache@v4
+        id: dependencies
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.elan
@@ -33,8 +34,20 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Obtain prebuilt Mathlib
         run: lake exe cache get
-      - name: Build all nine statement modules
-        run: python3 -B tools/build.py --evidence .build/ci
+      # Save dependencies before statement checking; a failed check must not
+      # discard a successful, fixed-version Mathlib download.
+      - name: Save Lean and dependency cache
+        if: steps.dependencies.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.elan
+            .lake/packages
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Check all nine statements with explicit memory bounds
+        run: |
+          lake --no-build --no-cache build +Mathlib +Qq
+          python3 -B tools/check.py --lean-memory-mib 4096 --rss-limit-mib 4608 --evidence .build/ci
       - uses: actions/upload-artifact@v4
         if: always()
         with:
