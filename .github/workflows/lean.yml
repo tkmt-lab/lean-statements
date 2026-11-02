@@ -47,7 +47,7 @@ jobs:
       - name: Check all nine statements with explicit memory bounds
         run: |
           lake --no-build --no-cache build +Mathlib +Qq
-          python3 -B tools/check.py --lean-memory-mib 8192 --rss-limit-mib 10240 --evidence .build/ci
+          python3 -B tools/check.py --lean-memory-mib 4096 --rss-limit-mib 4608 --evidence .build/ci
       - uses: actions/upload-artifact@v4
         if: always()
         with:
