@@ -163,6 +163,6 @@ two unmodified upstream attribute files and the changes made to the problem copi
 Linked papers, datasets and dependencies retain their own licenses and are not
 relicensed by this package.
 
-Use [CITATION.cff](CITATION.cff) to cite version 1.0.0 of the collection. Cite the
+Use [CITATION.cff](CITATION.cff) to cite version 1.0.1 of the collection. Cite the
 corresponding source paper for a mathematical result. No paper PDF, external dataset
 or proof closure is bundled here.

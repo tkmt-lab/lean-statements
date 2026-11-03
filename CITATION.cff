@@ -3,8 +3,8 @@
   "message": "Cite this software collection by version. Cite the corresponding source paper for a mathematical result.",
   "title": "Lean statements from published papers",
   "type": "software",
-  "version": "1.0.0",
-  "date-released": "2026-10-23",
+  "version": "1.0.1",
+  "date-released": "2026-11-04",
   "authors": [
     {
       "family-names": "Takimoto",

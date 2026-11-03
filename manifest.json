@@ -529,6 +529,6 @@
     "lake-manifest.json": "237c60e63284f1d14fb45e7e6a3546675dcc3d59ec33661dad78b1c2fe8d3703"
   },
   "package": "lean-statements",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "verification_summary": "checks/statement-correspondence.json"
 }

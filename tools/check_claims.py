@@ -46,8 +46,8 @@ def main():
         assert c['type_equal'] and row['correspondence']['type_equal']
         assert c['lean_expr_repr_sha256']==row['correspondence']['lean_expr_repr_sha256']
     citation=load('CITATION.cff');zenodo=load('.zenodo.json')
-    assert citation['version']==zenodo['version']==claims['version']==manifest['version']=='1.0.0'
-    assert citation['date-released']==zenodo['publication_date']=='2026-10-23'
+    assert citation['version']==zenodo['version']==claims['version']==manifest['version']=='1.0.1'
+    assert citation['date-released']==zenodo['publication_date']=='2026-11-04'
     assert citation['type']==zenodo['upload_type']=='software'
     assert citation['license'].lower()==zenodo['license'].lower()=='apache-2.0'
     config=tomllib.loads((ROOT/'lakefile.toml').read_text())
