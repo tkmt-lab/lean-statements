@@ -142,9 +142,16 @@ def main() -> None:
     mathlib = next(p for p in packages if p["name"] == "mathlib")
     assert mathlib["rev"] == expected["mathlib_commit"]
     cached = project / ".lake" / "packages" / "mathlib"
+    recovery = (f"Run 'lake exe cache get' in {project} and resolve any download failure; "
+                "then run 'python3 -B tools/prepare_setup.py' from the collection root "
+                "before retrying the type check.")
+    if not cached.is_dir():
+        raise RuntimeError(f"Missing Mathlib dependency directory: {cached}. {recovery}")
     assert subprocess.check_output(["git", "-C", str(cached), "rev-parse", "HEAD"],
                                    text=True).strip() == expected["mathlib_commit"]
-    assert (cached / ".lake/build/lib/lean/Mathlib.olean").is_file()
+    mathlib_olean = cached / ".lake/build/lib/lean/Mathlib.olean"
+    if not mathlib_olean.is_file():
+        raise RuntimeError(f"Missing prebuilt Mathlib file: {mathlib_olean}. {recovery}")
     for package in packages:
         local_pkg = (ROOT / ".lake/packages" / package["name"]).resolve()
         requested_pkg = (project / ".lake/packages" / package["name"]).resolve()

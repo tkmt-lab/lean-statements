@@ -20,15 +20,7 @@ def main() -> None:
     args = parser.parse_args()
     evidence = args.evidence.resolve()
     evidence.mkdir(parents=True, exist_ok=True)
-    manifest = json.loads((ROOT / "lake-manifest.json").read_text())
     before = {}
-    for entry in manifest["packages"]:
-        package = ROOT / ".lake/packages" / entry["name"]
-        if not package.is_dir():
-            raise RuntimeError("Missing prebuilt dependency: " + str(package))
-        rev = subprocess.check_output(["git", "-C", str(package), "rev-parse", "HEAD"], text=True).strip()
-        assert rev == entry["rev"], entry["name"]
-        before[entry["name"]] = rev
     report = {"result": "RUNNING", "constraints": {"lean_processes": 1, "nice": 10,
               "lean_threads": 1, "lean_memory_mib": 3072, "rss_limit_mib": 4096,
               "timeout_seconds_per_invocation": 900}, "packages": before, "runs": []}
@@ -93,18 +85,36 @@ def main() -> None:
         if record["exit_code"] or stopped:
             raise RuntimeError(f"{label} failed; see {log}")
 
-    run("lake-dependency-preflight", ["nice", "-n", "10", "lake", "--no-build", "--no-cache", "build",
-        "+Mathlib", "+Qq"])
-    run("lake-build", ["nice", "-n", "10", "lake", "--no-cache", "build"])
-    problems = json.loads((ROOT / "manifest.json").read_text())["problems"]
-    outputs = {}
-    for problem in problems:
-        output = ROOT / ".lake/build/lib/lean" / Path(problem["file"]).with_suffix(".olean")
-        assert output.is_file(), str(output)
-        outputs[str(output.relative_to(ROOT))] = hashlib.sha256(output.read_bytes()).hexdigest()
-    report["outputs"] = outputs
-    report["result"] = "PASS"
     persist()
+    try:
+        manifest = json.loads((ROOT / "lake-manifest.json").read_text())
+        for entry in manifest["packages"]:
+            package = ROOT / ".lake/packages" / entry["name"]
+            if not package.is_dir():
+                raise RuntimeError(f"Missing prebuilt dependency: {package}. "
+                                   "Run 'lake exe cache get' from the repository root and resolve "
+                                   "any download failure before retrying.")
+            rev = subprocess.check_output(["git", "-C", str(package), "rev-parse", "HEAD"], text=True).strip()
+            assert rev == entry["rev"], entry["name"]
+            before[entry["name"]] = rev
+        run("lake-dependency-preflight", ["nice", "-n", "10", "lake", "--no-build", "--no-cache", "build",
+            "+Mathlib", "+Qq"])
+        run("lake-build", ["nice", "-n", "10", "lake", "--no-cache", "build"])
+        problems = json.loads((ROOT / "manifest.json").read_text())["problems"]
+        outputs = {}
+        for problem in problems:
+            output = ROOT / ".lake/build/lib/lean" / Path(problem["file"]).with_suffix(".olean")
+            assert output.is_file(), str(output)
+            outputs[str(output.relative_to(ROOT))] = hashlib.sha256(output.read_bytes()).hexdigest()
+        report["outputs"] = outputs
+        report["result"] = "PASS"
+        persist()
+    except BaseException as error:
+        report["result"] = "FAIL"
+        report["error"] = {"type": type(error).__name__, "message": str(error)}
+        persist()
+        raise
+
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 """Check public statement/proof mappings, source hashes, and package boundaries."""
 import ast
+from datetime import date
 import hashlib
 import json
 from pathlib import Path
@@ -46,11 +47,17 @@ def main():
         assert c['type_equal'] and row['correspondence']['type_equal']
         assert c['lean_expr_repr_sha256']==row['correspondence']['lean_expr_repr_sha256']
     citation=load('CITATION.cff');zenodo=load('.zenodo.json')
-    assert citation['version']==zenodo['version']==claims['version']==manifest['version']=='1.0.1'
-    assert citation['date-released']==zenodo['publication_date']=='2026-11-04'
+    assert citation['version']==zenodo['version']==claims['version']==manifest['version']
+    assert citation['date-released']==zenodo['publication_date']
+    assert date.fromisoformat(citation['date-released']).isoformat()==citation['date-released']
     assert citation['type']==zenodo['upload_type']=='software'
     assert citation['license'].lower()==zenodo['license'].lower()=='apache-2.0'
     config=tomllib.loads((ROOT/'lakefile.toml').read_text())
+    assert config['version']==manifest['version'], 'Lake package version differs from collection metadata'
+    version=manifest['version'];release_date=citation['date-released']
+    readme=(ROOT/'README.md').read_text()
+    assert f'Version **{version}**' in readme and f'**{release_date}**' in readme
+    assert f'## {version} — {release_date}' in (ROOT/'CHANGELOG.md').read_text()
     previous='FormalConjecturesUtil'
     libs={x['name']:x for x in config['lean_lib']}
     for problem in manifest['problems']:

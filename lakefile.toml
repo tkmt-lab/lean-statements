@@ -1,5 +1,5 @@
 name = "lean_statements"
-version = "1.0.0"
+version = "1.0.2"
 defaultTargets = ["D12Statement"]
 
 [[require]]

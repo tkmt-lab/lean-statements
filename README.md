@@ -1,5 +1,9 @@
 # Lean statements from published papers
 
+Version **1.0.2** — planned release **2026-11-09** (not yet released).
+Collection DOI (all versions): [10.5281/zenodo.23594151](https://doi.org/10.5281/zenodo.23594151).
+The release coordinator must update the planned date in the release metadata on publication.
+
 Nine Lean files containing 18 theorem statements from three published research
 repositories. The files preserve their definitions, namespaces, hypotheses and types.
 Each theorem body is intentionally `by sorry`. A `formal_proof` attribute points to
@@ -66,8 +70,11 @@ refuses to start alongside another Lean process, limits its own process group to
 installs dependencies nor stops another task's process. Its JSON result lists the
 nine built modules and their hashes.
 
-The Ubuntu workflow installs elan, obtains the Mathlib cache and runs the static
-checks and monitored build, with a 15-minute job timeout. A timeout is a failed
+The Ubuntu workflow installs elan, obtains the Mathlib cache, runs the static
+checks, prepares the three support modules with `tools/prepare_setup.py`, and uses
+`tools/check.py` to compare all 18 original/local theorem-type pairs and inspect
+their parsed metadata. It does not run `tools/build.py` or the nine-module
+`lake build` target chain. The job timeout is 15 minutes. A timeout is a failed
 check, not evidence about a theorem. Local verification and its limits are recorded
 in [VERIFICATION-RECORD.md](VERIFICATION-RECORD.md).
 
@@ -95,7 +102,14 @@ compares the reconstructed source bytes with the published file's SHA-256. It al
 checks the unmodified upstream attribute files. It does not need network access.
 
 To compare the original and local theorem types in Lean and inspect the parsed
-solved/proof-link attributes, after caching dependencies:
+solved/proof-link attributes, first cache dependencies and prepare the support
+modules (or complete the package build above):
+
+```sh
+python3 -B tools/prepare_setup.py --evidence .build/setup-prep
+```
+
+Then run the D12 comparison:
 
 ```sh
 python3 -B tools/check.py --problem D12 --evidence .build/d12-check
@@ -163,6 +177,6 @@ two unmodified upstream attribute files and the changes made to the problem copi
 Linked papers, datasets and dependencies retain their own licenses and are not
 relicensed by this package.
 
-Use [CITATION.cff](CITATION.cff) to cite version 1.0.1 of the collection. Cite the
+Use [CITATION.cff](CITATION.cff) for the planned version 1.0.2 of the collection. Cite the
 corresponding source paper for a mathematical result. No paper PDF, external dataset
 or proof closure is bundled here.

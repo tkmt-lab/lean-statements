@@ -29,10 +29,10 @@ D12. Both original/normalized theorem types and both parsed metadata entries
 matched; this took 24.723 seconds. The earlier summary supplies the recorded
 comparison for the other 16 declarations.
 
-The Ubuntu GitHub Actions workflow is configured to obtain the Mathlib cache and
-build all nine modules within a 15-minute job timeout. It has not been run as part
-of this local preparation. Its success and network/cache timing remain to be checked
-when the repository is hosted.
+At the time of this local preparation, the Ubuntu GitHub Actions workflow was
+configured to obtain the Mathlib cache and build all nine modules within a
+15-minute job timeout. It was not run as part of that preparation. The current
+workflow is described below; this historical build record is not a CI run.
 
 ## Review corrections, 23 October 2026
 
@@ -56,9 +56,48 @@ The [receipt](checks/review-corrections.json) records the exact commands and lim
 
 Two earlier attempts stopped while checking AffineRays: the first exceeded the
 default 3 GiB sampled RSS limit, and the second reached Lean's default 3072 MiB
-memory threshold. These were resource failures, not type mismatches. The checker
-still defaults to those limits; larger limits must be requested explicitly and
-cannot exceed 4096 MiB for Lean or 4608 MiB sampled RSS. No linked proof was executed.
+memory threshold. These were resource failures, not type mismatches. At that time, the checker
+defaulted to those limits and allowed explicitly requested limits up to 4096 MiB
+for Lean or 4608 MiB sampled RSS. No linked proof was executed.
+
+## Limits and CI since version 1.0.1
+
+Version 1.0.1 retained the default 3072 MiB Lean threshold and 3072 MiB sampled
+RSS limit, but raised the maximum explicitly selectable limits to 11264 MiB
+and 12288 MiB respectively. The reason was a Linux run in which the original
+AffineRays comparison exceeded the former limits. With the raised limits,
+all nine pairs of files (18 theorem types) and their parsed metadata passed.
+The largest sampled RSS was 7,372,496 KiB (about 7.03 GiB); the comparison took
+146.666 seconds. These are historical measurements, not a new run for 1.0.2,
+minimum memory requirements, or a guarantee for another machine.
+
+The [Linux summary](checks/linux-correspondence.json) preserves the per-file
+measurements and the limits of that record. The executed diagnostic checker
+differed from the checker proposed for version 1.0.1 only in help/error text about the raised
+limits. Setup records were checked, but the generated setup JSON files were
+not retained, and dependency HEADs were not reread after the run. This was
+a Linux test machine, not GitHub Actions.
+
+The current workflow prepares the three support modules and compares all
+18 original/local theorem types and parsed attributes, using the explicit
+11264/12288 MiB limits. It also runs the static source and claim checks.
+It does not run the monitored package build or the nine-module target chain.
+The 15-minute job timeout remains in force. The records above do not establish
+the status of a current hosted CI run.
+
+## Version 1.0.2 preparation, 6 November 2026
+
+In a fresh local checkout, the static source reconstruction and claim/metadata
+checks passed for all nine files and 18 mappings. The mathematical files, support
+modules, theorem metadata and dependency pins were unchanged from 1.0.1.
+A deliberately mismatched Lake package version was rejected by the metadata check.
+Five lightweight diagnostic tests covered missing dependencies and failed process
+startup/preflight, including the saved FAIL result. Those tests did not run Lean.
+
+The preparation environment had no Lean/elan installation. Fetching the official
+elan installer returned HTTP 403. Consequently no new Lean build, D12 type comparison,
+or hosted CI success is recorded here. The historical results above remain historical;
+the Lean procedures need to be rerun in an environment with the pinned dependencies.
 
 ## Interpretation
 

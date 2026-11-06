@@ -1,0 +1,97 @@
+{
+  "record_kind": "Historical Linux correspondence run underlying version 1.0.1; not rerun for version 1.0.2",
+  "source_summary_sha256": "ca5578335e6a1268e698847ed3581251fe67e7fc4ef6733b3cf61a7dc581e9ba",
+  "lean": "4.35.0",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "lean_memory_mib": 11264,
+  "rss_limit_mib": 12288,
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "A3",
+      "original_peak_rss_kib": 1905328,
+      "normalized_peak_rss_kib": 1128148,
+      "declarations": 1,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "AffineRays",
+      "original_peak_rss_kib": 7372496,
+      "normalized_peak_rss_kib": 3192192,
+      "declarations": 1,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "K3",
+      "original_peak_rss_kib": 1913488,
+      "normalized_peak_rss_kib": 1130864,
+      "declarations": 1,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "C1",
+      "original_peak_rss_kib": 1911436,
+      "normalized_peak_rss_kib": 1136708,
+      "declarations": 2,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "O2",
+      "original_peak_rss_kib": 1911344,
+      "normalized_peak_rss_kib": 1136544,
+      "declarations": 2,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "D14",
+      "original_peak_rss_kib": 1913352,
+      "normalized_peak_rss_kib": 1130432,
+      "declarations": 1,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "E10",
+      "original_peak_rss_kib": 1916956,
+      "normalized_peak_rss_kib": 1141060,
+      "declarations": 2,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "Heesch",
+      "original_peak_rss_kib": 1952076,
+      "normalized_peak_rss_kib": 1162704,
+      "declarations": 6,
+      "all_types_equal": true,
+      "metadata_ok": true
+    },
+    {
+      "id": "D12",
+      "original_peak_rss_kib": 1913484,
+      "normalized_peak_rss_kib": 1136620,
+      "declarations": 2,
+      "all_types_equal": true,
+      "metadata_ok": true
+    }
+  ],
+  "type_pairs_matched": 18,
+  "metadata_files_passed": 9,
+  "source_hashes_verified": 18,
+  "setup_records_verified": 18,
+  "setup_json_recovered": false,
+  "pinned_checkout_log_count": 9,
+  "package_heads_reread_after_run": false,
+  "executed_diagnostic_checker_sha256": "de3a024a1f6283a245c72618229a358f75e79e49ed8072994dc411e6f4e8e99c",
+  "proposed_raised_checker_sha256": "3aa4a7862f598fcca6b6610800a899925d76fd857d05038cf0c8a9b7cecdb1c0",
+  "execution_difference_from_proposed": "only help/error text reflects raised limits",
+  "checker_seconds": 146.666,
+  "max_sampled_rss_kib": 7372496,
+  "single_run_not_a_guarantee": true,
+  "github_actions_ci_executed": false
+}
