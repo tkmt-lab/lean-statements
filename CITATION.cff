@@ -1,6 +1,6 @@
 {
   "cff-version": "1.2.0",
-  "message": "Cite this software collection by version. Cite the corresponding source paper for a mathematical result. Version 1.0.2 is planned for 2026-11-09 and is not yet released; the date must be updated on publication.",
+  "message": "Cite this software collection by version. Cite the corresponding source paper for a mathematical result. Version 1.0.2 was released on 2026-11-09.",
   "title": "Lean statements from published papers",
   "type": "software",
   "version": "1.0.2",

@@ -1,8 +1,7 @@
 # Lean statements from published papers
 
-Version **1.0.2** — planned release **2026-11-09** (not yet released).
+Version **1.0.2** — released **2026-11-09**.
 Collection DOI (all versions): [10.5281/zenodo.23594151](https://doi.org/10.5281/zenodo.23594151).
-The release coordinator must update the planned date in the release metadata on publication.
 
 Nine Lean files containing 18 theorem statements from three published research
 repositories. The files preserve their definitions, namespaces, hypotheses and types.
@@ -177,6 +176,6 @@ two unmodified upstream attribute files and the changes made to the problem copi
 Linked papers, datasets and dependencies retain their own licenses and are not
 relicensed by this package.
 
-Use [CITATION.cff](CITATION.cff) for the planned version 1.0.2 of the collection. Cite the
+Use [CITATION.cff](CITATION.cff) for version 1.0.2 of the collection. Cite the
 corresponding source paper for a mathematical result. No paper PDF, external dataset
 or proof closure is bundled here.

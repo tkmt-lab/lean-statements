@@ -1,13 +1,12 @@
 # Changelog
 
-## 1.0.2 — 2026-11-09 (planned; not yet released)
+## 1.0.2 — 2026-11-09
 
 - Correct the historical memory-limit description and document the limits and Linux measurements used since 1.0.1.
 - Describe the CI support preparation and type/metadata checks accurately, separately from the package build.
 - Explain support preparation before the D12 check; report missing dependencies and persist failed monitored builds as FAIL.
 - Align the Lake package version with citation and collection metadata and check their agreement.
 - The mathematical claims, definitions, hypotheses, 18 theorem statements and proof links are unchanged.
-- The release coordinator must replace the planned date with the publication date in all release metadata.
 
 ## 1.0.1 — 2026-11-04
 
